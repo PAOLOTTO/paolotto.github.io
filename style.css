@@ -57,17 +57,27 @@
     outline:none ;
 }
 
-.menu{
-position: absolute;
-top: 33px;
-display: none;
+ul.hoverzone {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position : abolsute;
 }
 
-.hoverzone{
-position: relative;
+
+
+ul.hoverzone li {
+    float: left;
+    width: 10em;
 }
 
-.hoverzone:hover .menu{
-    display: block;
+ul.hoverzone li ul {
+    position: absolute;
+    width: 10em;
+    left: -999em;
 }
 
+    ul.hoverzone li:hover ul {
+        left: auto;
+
+}
