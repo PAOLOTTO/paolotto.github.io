@@ -4,36 +4,29 @@ var palette = 0
 
 var TruthArry = new Array
 (
-"What is your least favorite thing about family gatherings?",
-"What is your favorite thing about family gatherings?",
 "What is one thing that makes you relax?" ,
 "Tell about the last dream you had and don’t leave anything out.",
-"Have you ever told someone you wouldn’t be home just so they wouldn’t come over?",
-"Have you ever danced on a table when you were drunk?",
+"Have you ever told someone you weren't home just so they wouldn't come over?",
+"What's the most embarrassing thing you did when you were drunk?",
 "Have you ever shared chewing gum with anyone?",
 "If anyone in your family could win an award for the most annoying, who would it be?",
 "Have you ever cheated on a test?",
-"If you could create your own job title, what would it be?",
 "What is your excuse to get out of exercising?",
 "What was the one thing you could never learn how to do no matter how hard you tried?",
-"What was your favorite childhood television show?",
-"Did you ever sneak into an adult movie when you were underage?",
+"What was your favorite childhood television show?"
 "If you had a remote control that would operate anything, what would you control?",
 "What is your guilty pleasure?",
 "Where is your favorite vacation spot?",
-"Have you ever used a work computer for personal use",
-"What is your favorite thing to do with your leisure time?",
-"If you were granted three wishes, what would you wish for?",
-"What is your favorite holiday?",
-"What is your biggest pet peeve?",
-"On a scale from 1-10, where do your patience fall?",
+"If you were granted one wish, what would you wish for?",
+"What is your favorite season?",
+"On a scale from 1-10, what do you rate the person on your right?",
 "What makes you laugh?",
 "What is something you find to be disgusting?"
 );
 
 ////////////////////////////////////////////////////////////////////////
 var DareArray= new Array(
-"Get a bar of soap from the bathroom and sell it to the group for 3 minutes.",
+"Get a bar of soap from the bathroom and sell it to the group for 1 minutes.",
 "Go outside, and while skipping down the street, sing “Let it Go’ from Frozen.",
 "With your eyes closed, pick someone from your contact list and send them a text.",
 "Stand up and do your best impersonation of the person on your right.",
