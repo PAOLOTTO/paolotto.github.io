@@ -56,3 +56,18 @@
     background-color: var(--bgc);
     outline:none ;
 }
+
+.menu{
+position: absolute;
+top: 33px;
+display: none;
+}
+
+.hoverzone{
+position: relative;
+}
+
+.hoverzone:hover .menu{
+    display: block;
+}
+
