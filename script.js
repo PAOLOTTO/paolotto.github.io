@@ -74,7 +74,6 @@ function DareF(){
 }
 
 function palette_set_blue() {
-    var palette = 1
   r.style.setProperty('--bgc', '#242F9B');
   r.style.setProperty('--btnc', '#9BA3EB');
   r.style.setProperty('--abtnc', '#646FD4');
@@ -82,7 +81,6 @@ function palette_set_blue() {
 }
 
 function palette_set_red() {
-    var palette = 2
   r.style.setProperty('--bgc', '#F90716');
   r.style.setProperty('--btnc', '#FFF323');
   r.style.setProperty('--abtnc', '#FFCA03');
