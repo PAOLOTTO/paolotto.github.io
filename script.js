@@ -73,18 +73,6 @@ function DareF(){
     TOD.value=DareArray[x];
 }
 
-
-//palettes
-
-var r = document.querySelector(':root');
-
-function palette_set_next() {
-    if (palette === 0) {
-        function palette_set_blue 
-    }
-    if 
-}
-
 function palette_set_blue() {
     var palette = 1
   r.style.setProperty('--bgc', '#242F9B');
