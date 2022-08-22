@@ -80,3 +80,11 @@ function palette_set_blue() {
   r.style.setProperty('--abtnc', '#646FD4');
   r.style.setProperty('--txtc', '#DBDFFD');
 }
+
+function palette_set_red() {
+    var palette = 2
+  r.style.setProperty('--bgc', '#F90716');
+  r.style.setProperty('--btnc', '#FFF323');
+  r.style.setProperty('--abtnc', '#FFCA03');
+  r.style.setProperty('--txtc', '#FF5403');
+}
