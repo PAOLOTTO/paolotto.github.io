@@ -57,27 +57,26 @@
     outline:none ;
 }
 
-ul.hoverzone {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    position : abolsute;
+.topnav {
+  overflow: hidden;
+  background-color: #333;
 }
 
-
-
-ul.hoverzone li {
-    float: left;
-    width: 10em;
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
 
-ul.hoverzone li ul {
-    position: absolute;
-    width: 10em;
-    left: -999em;
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-    ul.hoverzone li:hover ul {
-        left: auto;
-
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
 }
