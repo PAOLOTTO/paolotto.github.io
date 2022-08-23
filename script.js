@@ -11,7 +11,7 @@ var TruthArry = new Array
 "Have you ever cheated on a test?",
 "What is your excuse to get out of exercising?",
 "What was the one thing you could never learn how to do no matter how hard you tried?",
-"What was your favorite childhood television show?"
+"What was your favorite childhood television show?",
 "If you had a remote control that would operate anything, what would you control?",
 "What is your guilty pleasure?",
 "Where is your favorite vacation spot?",
