@@ -1,7 +1,5 @@
 // Created by Paolo Rizzone
 
-var palette = 0
-
 var TruthArry = new Array
 (
 "What is one thing that makes you relax?" ,
