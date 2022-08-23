@@ -22,8 +22,10 @@ var TruthArry = new Array
 "What is something you find to be disgusting?"
 );
 
-////////////////////////////////////////////////////////////////////////
-var DareArray= new Array(
+////////////////////////////////////////////
+
+var DareArray= new Array
+(
 "Get a bar of soap from the bathroom and sell it to the group for 1 minutes.",
 "Go outside, and while skipping down the street, sing “Let it Go’ from Frozen.",
 "With your eyes closed, pick someone from your contact list and send them a text.",
@@ -49,7 +51,8 @@ var DareArray= new Array(
 "Get on all fours and walk over to a wall like a dog, then lick the wall.",
 "Stand on a chair and act like a monkey for 5 minutes.",
 "Act like a cat and “make bread” on the person sitting beside you."
-        );
+);
+
 function TruthF(){
     var l = TruthArry.length;
     var x= Math.floor((Math.random()*l));
@@ -64,14 +67,14 @@ function DareF(){
     TOD.value=DareArray[x];
 }
 
-function palette_set_blue() {
+function palette_set_blue(){
   r.style.setProperty('--bgc', '#242F9B');
   r.style.setProperty('--btnc', '#9BA3EB');
   r.style.setProperty('--abtnc', '#646FD4');
   r.style.setProperty('--txtc', '#DBDFFD');
 }
 
-function palette_set_red() {
+function palette_set_red(){
   r.style.setProperty('--bgc', '#F90716');
   r.style.setProperty('--btnc', '#FFF323');
   r.style.setProperty('--abtnc', '#FFCA03');
