@@ -64,7 +64,7 @@ body {
 .dropbtn {
   background-color: var(--btnc);
   color: var(--txtc);
-  padding: 10px;
+  padding: 5px 5px 5px 5px;
   font-size: 20px;
   border: 2px solid var(--btnc);
   border-radius: 25px;
@@ -74,6 +74,7 @@ body {
 .dropbtn:hover, .dropbtn:focus {
   background-color: var(--abtnc);
   color: var(--abtnc);
+  border: 2px solid var(--abtnc);
 }
 
 .dropdown {
