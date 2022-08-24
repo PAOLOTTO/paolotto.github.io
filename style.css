@@ -10,6 +10,7 @@ body {
 }
 
 .palette{
+    background-color: var(--bgc);
     color: var(--txtc);
 }
 
