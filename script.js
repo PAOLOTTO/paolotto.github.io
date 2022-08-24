@@ -85,7 +85,7 @@ function palette_set_red(){
 
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
-function myFunction() {
+function palette() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
