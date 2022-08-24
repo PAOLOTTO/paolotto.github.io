@@ -94,7 +94,6 @@ body {
 .dropdown-content button {
   background-color: var(--btnc);
   color: var(--txtc);
-  padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
