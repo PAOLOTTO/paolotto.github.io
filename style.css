@@ -22,8 +22,7 @@ body {
     text-align: center;
     font-size: 150%;
     float: none;
-    margin-left: 3%;
-    margin-top: 10%;
+    margin-top: 20%;
     border-radius: 5px;
     background-color: var(--btnc);
     color: var(--txtc);
