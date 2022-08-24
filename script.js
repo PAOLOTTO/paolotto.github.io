@@ -83,6 +83,13 @@ function palette_set_red(){
   r.style.setProperty('--txtc', '#FF5403');
 }
 
+function palette_set_pink(){
+  r.style.setProperty('--bgc', '#7A4495');
+  r.style.setProperty('--btnc', '#FF8FB1');
+  r.style.setProperty('--abtnc', '#B270A2');
+  r.style.setProperty('--txtc', '#FCE2DB');
+}
+
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function palette() {
