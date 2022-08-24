@@ -67,6 +67,8 @@ function DareF(){
     TOD.value=DareArray[x];
 }
 
+var r = document.querySelector(':root');
+
 function palette_set_blue(){
   r.style.setProperty('--bgc', '#242F9B');
   r.style.setProperty('--btnc', '#9BA3EB');
