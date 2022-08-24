@@ -77,10 +77,10 @@ function palette_set_blue(){
 }
 
 function palette_set_red(){
-  r.style.setProperty('--bgc', '#F90716');
-  r.style.setProperty('--btnc', '#FFF323');
-  r.style.setProperty('--abtnc', '#FFCA03');
-  r.style.setProperty('--txtc', '#FF5403');
+  r.style.setProperty('--bgc', '#3a001e');
+  r.style.setProperty('--btnc', '#ff6347');
+  r.style.setProperty('--abtnc', '#cc1f00');
+  r.style.setProperty('--txtc', '#fff7f3');
 }
 
 function palette_set_pink(){
