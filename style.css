@@ -10,7 +10,7 @@ body {
 }
 
 .palette{
-    background-color: var(--btnc);
+    color: var(--txtc);
 }
 
 /*  all the btns main design */
