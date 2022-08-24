@@ -1,3 +1,7 @@
+body {
+    font-family: 'Source Code Pro';font-size: 22px;
+}
+
 :root {
     --bgc: #1c3879;
     --btnc: #7bb6b2;
