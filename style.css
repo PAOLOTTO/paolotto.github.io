@@ -64,9 +64,10 @@ body {
 .dropbtn {
   background-color: var(--btnc);
   color: var(--txtc);
-  padding: 16px;
+  padding: 10px;
   font-size: 20px;
-  border: none;
+  border: 2px solid var(--btnc);
+  border-radius: 25px;
   cursor: pointer;
 }
 
