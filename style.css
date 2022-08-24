@@ -18,12 +18,12 @@ body {
 
 .btn{
     height: 100px;
-    width: 44%;
+    width: 30%;
     text-align: center;
     font-size: 150%;
     float: none;
     margin-left: 3%;
-    margin-top: 170px;
+    margin-top: 10%;
     border-radius: 5px;
     background-color: var(--btnc);
     color: var(--txtc);
