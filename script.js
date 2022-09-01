@@ -2,24 +2,22 @@
 
 var TruthArry = new Array
 (
-"What is one thing that makes you relax?" ,
+"Do you like pineapple on pizza?" ,
 "Tell about the last dream you had and don’t leave anything out.",
-"Have you ever told someone you weren't home just so they wouldn't come over?",
 "What's the most embarrassing thing you did when you were drunk?",
 "Have you ever shared chewing gum with anyone?",
-"If anyone in your family could win an award for the most annoying, who would it be?",
-"Have you ever cheated on a test?",
+"What don't your parents know about you?",
+"Who looks sexier in this room?",
 "What is your excuse to get out of exercising?",
-"What was the one thing you could never learn how to do no matter how hard you tried?",
 "What was your favorite childhood television show?",
-"If you had a remote control that would operate anything, what would you control?",
-"What is your guilty pleasure?",
+"If you had a remote control that would operate anything, what would you control and why?",
+"If you were the opposite sex for a day, what would you do?",
 "Where is your favorite vacation spot?",
 "If you were granted one wish, what would you wish for?",
 "What is your favorite season?",
 "On a scale from 1-10, what do you rate the person on your right?",
-"What makes you laugh?",
-"What is something you find to be disgusting?"
+"What is the funniest joke you know?",
+"Do you have a weird collection?"
 );
 
 ////////////////////////////////////////////
