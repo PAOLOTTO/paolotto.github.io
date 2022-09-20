@@ -11,18 +11,15 @@ body {
 
 /*  all the btns main design */
 
-.center{
-    margin: auto;
-}
-
 .btn{
     height: 100px;
     width: 30%;
+    margin: auto;
     text-align: center;
     font-size: 150%;
-    float: left;
     margin-top: 20%;
     border-radius: 5px;
+    padding: 5%;
     background-color: var(--btnc);
     color: var(--txtc);
     box-shadow: 0px 0px 10px 1px var(--btnc);
@@ -45,7 +42,7 @@ body {
     float: left;
     width: 100%;
     font-size: 150%;
-    padding:15px ;
+    padding: 15px;
 }
 
 /* needed for all alements  */
