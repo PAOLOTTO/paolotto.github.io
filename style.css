@@ -10,6 +10,7 @@ body {
 }
 
 /*  all the btns main design */
+
 .center{
     margin: auto;
 }
@@ -19,7 +20,7 @@ body {
     width: 30%;
     text-align: center;
     font-size: 150%;
-    float: none;
+    float: left;
     margin-top: 20%;
     border-radius: 5px;
     background-color: var(--btnc);
@@ -36,7 +37,7 @@ body {
 
 .ans{
     height:250px;
-    overflow: hidden;
+    overflow: auto;
     background-color: transparent;
     color: var(--txtc);
     text-align: center;
@@ -60,8 +61,7 @@ body {
 /* palette */
 
 .dropbtn {
-    background-color: var(--btnc);
-    color: var(--txtc);
+    background-color: transparent;
     padding: 5px 5px 5px 5px;
     font-size: 20px;
     border: 2px solid var(--btnc);
