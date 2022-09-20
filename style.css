@@ -3,10 +3,10 @@ body {
 }
 
 :root {
-    --bgc: #1c3879;
-    --btnc: #7bb6b2;
-    --abtnc: #5C8F8B;
-    --txtc: #fff7d6;
+    --bgc: #242F9B;
+    --btnc: #9BA3EB;
+    --abtnc: #646FD4;
+    --txtc: #DBDFFD;
 }
 
 /*  all the btns main design */
@@ -71,11 +71,11 @@ body {
   }
   .dropdown-content a {
     display: block;
-    color: #000000;
+    color: var(--bgc);
     padding: 5px;
     text-decoration: none;
   }
   .dropdown-content a:hover {
     color: #FFFFFF;
-    background-color: #00A4BD;
+    background-color: var(--abtnc);
   }
