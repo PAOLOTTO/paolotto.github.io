@@ -10,6 +10,9 @@ body {
 }
 
 /*  all the btns main design */
+.center{
+    margin: auto;
+}
 
 .btn{
     height: 100px;
