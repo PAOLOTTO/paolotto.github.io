@@ -55,27 +55,47 @@ body {
 
 /* palette */
 
-.dropdown {
-    display: inline-block;
-    position: relative;
+.dropbtn {
+    background-color: var(--btnc);
+    color: var(--txtc);
+    padding: 5px 5px 5px 5px;
+    font-size: 20px;
+    border: 2px solid var(--btnc);
+    border-radius: 25px;
+    cursor: pointer;
   }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: var(--abtnc);
+    color: var(--abtnc);
+    border: 2px solid var(--abtnc);
+  }
+  
+  .dropdown {
+    float: right;
+    position: relative;
+    display: inline-block;
+  }
+  
   .dropdown-content {
     display: none;
     position: absolute;
-    width: 100%;
+    background-color: var(--btnc);
     overflow: auto;
-    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;
+    z-index: 1;
   }
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  .dropdown-content a {
-    display: block;
-    color: var(--bgc);
-    padding: 5px;
+  
+  .dropdown-content button {
+    background-color: var(--btnc);
+    color: var(--txtc);
     text-decoration: none;
+    display: block;
   }
-  .dropdown-content a:hover {
-    color: #FFFFFF;
-    background-color: var(--abtnc);
+  
+  .dropdown button:hover {
+      background-color: var(--abtnc);
   }
+  
+  .show {display: block;}
