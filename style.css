@@ -27,6 +27,7 @@ body {
 .btn:active {
     background-color: var(--abtnc);
     color: var(--txtc);
+    box-shadow: 0px 0px 10px 1px var(--abtnc);
     
 }
 
