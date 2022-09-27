@@ -11,10 +11,15 @@ body {
 
 /*  all the btns main design */
 
+.center{
+  padding: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .btn{
     height: 100px;
     width: 30%;
-    margin: auto;
     text-align: center;
     font-size: 150%;
     margin-top: 20%;
