@@ -12,7 +12,6 @@ body {
 /*  all the btns main design */
 
 .center{
-  padding: 25%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -68,8 +67,8 @@ body {
     border: 4px solid var(--btnc);
     border-radius: 50px;
     cursor: pointer;
-    color: var(--btnc);
-    background-color: var(--bgc);
+    color: var(--txtc);
+    background-color: var(--btnc);
   }
   
   .dropbtn:hover, .dropbtn:focus {
@@ -95,7 +94,6 @@ body {
   
   .dropdown-content button {
     background-color: var(--btnc);
-    color: var(--txtc);
     text-decoration: none;
     display: block;
   }
