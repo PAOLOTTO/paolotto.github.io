@@ -12,16 +12,19 @@ body {
 /*  all the btns main design */
 
 .left{
-  left: 25%;
+  left: 10%;
+  right: 60%;
 }
 
 .right{
-  right: 25%;
+  left: 60%;
+  right: 10%;
 }
 
 .btn{
     height: 100px;
     width: 30%;
+    margin: auto;
     text-align: center;
     font-size: 150%;
     margin-top: 20%;
@@ -65,8 +68,6 @@ body {
 
 .dropbtn {
     background-color: transparent;
-    top: 5%;
-    left: 5%;
     font-size: 20px;
     border: 4px solid var(--btnc);
     border-radius: 50px;
@@ -81,9 +82,9 @@ body {
   }
   
   .dropdown {
-/*  float: right; */
+    float: right;
     position: relative;
-    display: inline-block;
+/*    display: inline-block; */
     background-color: var(--btnc);
   }
   
