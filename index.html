@@ -39,16 +39,27 @@
     .inputs-section h1 {
       margin-bottom: 20px;
     }
-    /* Organize the form items on separate lines */
-    .form-item {
+    
+    /* Flexbox for grouping two form items side by side */
+    .input-group {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
       margin-bottom: 15px;
+    }
+    
+    /* Each item inside the flex row */
+    .input-group .form-item {
+      flex-basis: 48%;
       display: flex;
       flex-direction: column;
     }
+    
     .inputs-section label {
       font-size: 12px;
       margin-bottom: 5px;
     }
+    
     .inputs-section input[type="file"], 
     .inputs-section input[type="color"], 
     .inputs-section input[type="text"] {
@@ -62,6 +73,7 @@
       box-shadow: none;
       appearance: none;
     }
+    
     .inputs-section button {
       background-color: white;
       color: black;
@@ -106,35 +118,41 @@
     <div class="inputs-section">
       <h1>Album Cover Maker</h1>
 
-      <!-- Organized form-item for better layout -->
-      <div class="form-item">
-        <label for="bgColor">Background Color:</label>
-        <input type="color" id="bgColor" name="bgColor" value="#f58b57">
-      </div>
-      
-      <div class="form-item">
-        <label for="color">Text Color:</label>
-        <input type="color" id="color" name="color" value="#000000">
-      </div>
-      
-      <div class="form-item">
-        <label for="image1">Top Image:</label>
-        <input type="file" id="image1" accept="image/*">
+      <!-- Grouping inputs two by two -->
+      <div class="input-group">
+        <div class="form-item">
+          <label for="bgColor">Background Color:</label>
+          <input type="color" id="bgColor" name="bgColor" value="#f58b57">
+        </div>
+        
+        <div class="form-item">
+          <label for="color">Text Color:</label>
+          <input type="color" id="color" name="color" value="#000000">
+        </div>
       </div>
 
-      <div class="form-item">
-        <label for="image2">Bottom Image:</label>
-        <input type="file" id="image2" accept="image/*">
-      </div>
-      
-      <div class="form-item">
-        <label for="text1">Top Text:</label>
-        <input type="text" id="text1" name="text1" value="THE LIFE OF PABLO">
+      <div class="input-group">
+        <div class="form-item">
+          <label for="image1">Top Image:</label>
+          <input type="file" id="image1" accept="image/*">
+        </div>
+        
+        <div class="form-item">
+          <label for="image2">Bottom Image:</label>
+          <input type="file" id="image2" accept="image/*">
+        </div>
       </div>
 
-      <div class="form-item">
-        <label for="text2">Bottom Text:</label>
-        <input type="text" id="text2" name="text2" value="WHICH / ONE">
+      <div class="input-group">
+        <div class="form-item">
+          <label for="text1">Top Text:</label>
+          <input type="text" id="text1" name="text1" value="THE LIFE OF PABLO">
+        </div>
+        
+        <div class="form-item">
+          <label for="text2">Bottom Text:</label>
+          <input type="text" id="text2" name="text2" value="WHICH / ONE">
+        </div>
       </div>
 
       <button type="button" onclick="generateImage()">Generate</button>
