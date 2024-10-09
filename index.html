@@ -43,8 +43,32 @@
       margin-bottom: 10px;
       width: 100%;
     }
+    .inputs-section input[type="file"], 
+    .inputs-section input[type="color"], 
+    .inputs-section input[type="text"] {
+    padding: 10px;
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: none;
+    appearance: none;
+    }
     .inputs-section button {
-      width: auto;
+    background-color: white;
+    color: black;
+    padding: 15px 20px;
+    font-size: 18px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .inputs-section button:hover {
+    background-color: #000;
+    color: #fff;
     }
     #preview-section {
       width: 60%;
