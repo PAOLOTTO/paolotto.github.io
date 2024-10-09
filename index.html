@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="./assets/icon.ico" rel="icon">
   <style>
     body {
       background-color: #1A2130;
@@ -82,10 +83,10 @@
       <input type="color" id="color" name="color" value="#000000">
       
       <label for="image1">Top Image:</label>
-      <input type="file" id="image1" accept="image/*">
+      <input type="file" id="image1" accept="image/*" value="./assets/tlop1.jpg">
       
       <label for="image2">Bottom Image:</label>
-      <input type="file" id="image2" accept="image/*">
+      <input type="file" id="image2" accept="image/*" value="./assets/tlop2.jpg">
       
       <label for="text1">Top Text:</label>
       <input type="text" id="text1" name="text1" value="THE LIFE OF PABLO">
@@ -147,13 +148,13 @@
       textElement0.style.color = color;
       preview.appendChild(textElement0);
       
-      for (let i = 0; i = 4; i++) {
-      const textElement1 = document.createElement('p');
-      textElement1.innerText = text1;
-      textElement1.style.top = '(i*10 + 20)%';
-      textElement1.style.left = '10%';
-      preview.appendChild(textElement1);
-      }
+//      for (let i = 0; i = 4; i++) {
+//      const textElement1 = document.createElement('p');
+//      textElement1.innerText = text1;
+//      textElement1.style.top = '(i*10 + 20)%';
+//      textElement1.style.left = '10%';
+//      preview.appendChild(textElement1);
+//      }
       
       const textElement2 = document.createElement('p');
       textElement2.innerText = text2;
@@ -176,10 +177,10 @@
       });
     }
     
-    // Gerar preview automaticamente quando a página carregar
-//    window.onload = function() {
-//      generateImage();
-//    }
+    Gerar preview automaticamente quando a página carregar
+    window.onload = function() {
+      generateImage();
+    }
   </script>
 </body>
 </html>
