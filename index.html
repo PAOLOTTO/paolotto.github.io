@@ -39,36 +39,44 @@
     .inputs-section h1 {
       margin-bottom: 20px;
     }
-    .inputs-section label, .inputs-section input, .inputs-section button {
-      margin-bottom: 10px;
-      width: 40%;
+    /* Organize the form items on separate lines */
+    .form-item {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+    .inputs-section label {
+      font-size: 12px;
+      margin-bottom: 5px;
     }
     .inputs-section input[type="file"], 
     .inputs-section input[type="color"], 
     .inputs-section input[type="text"] {
-    padding: 10px;
-    font-size: 10px;
-    background-color: white;
-    color: black;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    box-shadow: none;
-    appearance: none;
+      padding: 10px;
+      font-size: 12px;
+      background-color: white;
+      color: black;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+      box-shadow: none;
+      appearance: none;
     }
     .inputs-section button {
-    background-color: white;
-    color: black;
-    padding: 15px 20px;
-    font-size: 14px;
-    border: 2px solid #000;
-    border-radius: 5px;
-    width: 40%;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
+      background-color: white;
+      color: black;
+      padding: 10px;
+      font-size: 14px;
+      border: 2px solid #000;
+      border-radius: 5px;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-top: 20px;
     }
     .inputs-section button:hover {
-    background-color: #000;
-    color: #fff;
+      background-color: #000;
+      color: #fff;
     }
     #preview-section {
       width: 60%;
@@ -97,25 +105,38 @@
     <!-- Seção de inputs à esquerda -->
     <div class="inputs-section">
       <h1>Album Cover Maker</h1>
+
+      <!-- Organized form-item for better layout -->
+      <div class="form-item">
+        <label for="bgColor">Background Color:</label>
+        <input type="color" id="bgColor" name="bgColor" value="#f58b57">
+      </div>
       
-      <label for="bgColor">Background Color:</label>
-      <input type="color" id="bgColor" name="bgColor" value="#f58b57">
+      <div class="form-item">
+        <label for="color">Text Color:</label>
+        <input type="color" id="color" name="color" value="#000000">
+      </div>
       
-      <label for="bgColor">Text Color:</label>
-      <input type="color" id="color" name="color" value="#000000">
+      <div class="form-item">
+        <label for="image1">Top Image:</label>
+        <input type="file" id="image1" accept="image/*">
+      </div>
+
+      <div class="form-item">
+        <label for="image2">Bottom Image:</label>
+        <input type="file" id="image2" accept="image/*">
+      </div>
       
-      <label for="image1">Top Image:</label>
-      <input type="file" id="image1" accept="image/*">
-      
-      <label for="image2">Bottom Image:</label>
-      <input type="file" id="image2" accept="image/*">
-      
-      <label for="text1">Top Text:</label>
-      <input type="text" id="text1" name="text1" value="THE LIFE OF PABLO">
-      
-      <label for="text2">Bottom Text:</label>
-      <input type="text" id="text2" name="text2" value="WHICH / ONE">
-      
+      <div class="form-item">
+        <label for="text1">Top Text:</label>
+        <input type="text" id="text1" name="text1" value="THE LIFE OF PABLO">
+      </div>
+
+      <div class="form-item">
+        <label for="text2">Bottom Text:</label>
+        <input type="text" id="text2" name="text2" value="WHICH / ONE">
+      </div>
+
       <button type="button" onclick="generateImage()">Generate</button>
       <button id="downloadButton" style="display:none;" onclick="downloadImage()">Download</button>
     </div>
@@ -170,14 +191,6 @@
       textElement0.style.color = color;
       preview.appendChild(textElement0);
       
-//      for (let i = 0; i = 4; i++) {
-//      const textElement1 = document.createElement('p');
-//      textElement1.innerText = text1;
-//      textElement1.style.top = '(i*10 + 20)%';
-//      textElement1.style.left = '10%';
-//      preview.appendChild(textElement1);
-//      }
-      
       const textElement2 = document.createElement('p');
       textElement2.innerText = text2;
       textElement2.style.top = '85%';
@@ -198,11 +211,6 @@
         link.click();
       });
     }
-    
-//    Gerar preview automaticamente quando a página carregar
-//    window.onload = function() {
-//      generateImage();
-//    }
   </script>
 </body>
 </html>
