@@ -11,17 +11,51 @@
     body {
       background-color: #1A2130;
       font-family: "Montserrat", sans-serif;
-      text-align: center;
       font-weight: 400;
       color: #FDFFE2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+      justify-content: space-between;
     }
     h1 {
       font-weight: 800;
     }
+    /* Layout principal: inputs à esquerda, preview à direita */
+    .container {
+      display: flex;
+      width: 100%;
+    }
+    .inputs-section {
+      width: 40%;
+      padding: 20px;
+      background-color: #f7f7f7;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .inputs-section h1 {
+      margin-bottom: 20px;
+    }
+    .inputs-section label, .inputs-section input, .inputs-section button {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    .inputs-section button {
+      width: auto;
+    }
+    #preview-section {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     #preview {
       width: 500px;
       height: 500px;
-      margin: 20px auto;
       border: 2px solid #ccc;
       position: relative;
     }
@@ -36,30 +70,35 @@
   </style>
 </head>
 <body>
-  <h1>Gerador de Imagem</h1>
+  <div class="container">
+    <!-- Seção de inputs à esquerda -->
+    <div class="inputs-section">
+      <h1>Gerador de Imagem</h1>
+      
+      <label for="bgColor">Cor de fundo:</label>
+      <input type="color" id="bgColor" name="bgColor">
+      
+      <label for="image1">Imagem 1:</label>
+      <input type="file" id="image1" accept="image/*">
+      
+      <label for="image2">Imagem 2:</label>
+      <input type="file" id="image2" accept="image/*">
+      
+      <label for="text1">Texto 1:</label>
+      <input type="text" id="text1" name="text1">
+      
+      <label for="text2">Texto 2:</label>
+      <input type="text" id="text2" name="text2">
+      
+      <button type="button" onclick="generateImage()">Gerar Imagem</button>
+      <button id="downloadButton" style="display:none;" onclick="downloadImage()">Baixar Imagem</button>
+    </div>
 
-  <form id="form">
-    <label for="bgColor">Cor de fundo:</label>
-    <input type="color" id="bgColor" name="bgColor"><br><br>
-
-    <label for="image1">Imagem 1:</label>
-    <input type="file" id="image1" accept="image/*"><br><br>
-
-    <label for="image2">Imagem 2:</label>
-    <input type="file" id="image2" accept="image/*"><br><br>
-
-    <label for="text1">Texto 1:</label>
-    <input type="text" id="text1" name="text1" placeholder="THE LIFE OF PABLO"><br><br>
-
-    <label for="text2">Texto 2:</label>
-    <input type="text" id="text2" name="text2"><br><br>
-
-    <button type="button" onclick="generateImage()">Gerar Imagem</button>
-  </form>
-
-  <div id="preview"></div>
-
-  <button id="downloadButton" style="display:none;" onclick="downloadImage()">Baixar Imagem</button>
+    <!-- Seção de preview à direita -->
+    <div id="preview-section">
+      <div id="preview"></div>
+    </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
