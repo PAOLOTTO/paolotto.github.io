@@ -115,7 +115,6 @@
       // Preparo da div de visualização
       const preview = document.getElementById('preview');
       preview.style.backgroundColor = bgColor;
-      preview.style.color = color
       preview.innerHTML = '';
 
       // Adicionando as imagens
@@ -142,10 +141,12 @@
 
       // Adicionando os textos
       const textElement0 = document.createElement('p');
-      textElement1.innerText = text1;
-      textElement1.style.top = '10%';
-      textElement1.style.left = '10%';
-      preview.appendChild(textElement1);
+      textElement0.innerText = text1;
+      textElement0.style.top = '10%';
+      textElement0.style.left = '10%';
+      textElement0.style.color = color;
+      preview.appendChild(textElement0);
+      
       for (let i = 0; i = 4; i++) {
       const textElement1 = document.createElement('p');
       textElement1.innerText = text1;
