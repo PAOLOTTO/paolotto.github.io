@@ -64,7 +64,7 @@
     }
     #preview p {
       position: absolute;
-      color: white;
+      color: black;
       font-weight: 900;
       font-size: 24px;
     }
@@ -78,6 +78,9 @@
       
       <label for="bgColor">Background Color:</label>
       <input type="color" id="bgColor" name="bgColor" value="#f58b57">
+      
+      <label for="bgColor">Text Color:</label>
+      <input type="color" id="color" name="color" value="#000000">
       
       <label for="image1">Top Image:</label>
       <input type="file" id="image1" accept="image/*">
@@ -106,12 +109,14 @@
     function generateImage() {
       // Pegando os valores
       const bgColor = document.getElementById('bgColor').value;
+      const color = document.getElementById('color').value;
       const text1 = document.getElementById('text1').value;
       const text2 = document.getElementById('text2').value;
 
       // Preparo da div de visualização
       const preview = document.getElementById('preview');
       preview.style.backgroundColor = bgColor;
+      preview.style.color = color
       preview.innerHTML = '';
 
       // Adicionando as imagens
@@ -158,7 +163,7 @@
 
       html2canvas(preview).then(canvas => {
         const link = document.createElement('a');
-        link.download = 'imagem-gerada.png';
+        link.download = 'thelifeof.png';
         link.href = canvas.toDataURL();
         link.click();
       });
