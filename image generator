@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Imagem</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    #preview {
+      width: 500px;
+      height: 500px;
+      margin: 20px auto;
+      border: 2px solid #ccc;
+      position: relative;
+    }
+    #preview img {
+      position: absolute;
+    }
+    #preview p {
+      position: absolute;
+      font-size: 24px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gerador de Imagem</h1>
+
+  <form id="form">
+    <label for="bgColor">Cor de fundo:</label>
+    <input type="color" id="bgColor" name="bgColor"><br><br>
+
+    <label for="image1">Imagem 1:</label>
+    <input type="file" id="image1" accept="image/*"><br><br>
+
+    <label for="image2">Imagem 2:</label>
+    <input type="file" id="image2" accept="image/*"><br><br>
+
+    <label for="text1">Texto 1:</label>
+    <input type="text" id="text1" name="text1"><br><br>
+
+    <label for="text2">Texto 2:</label>
+    <input type="text" id="text2" name="text2"><br><br>
+
+    <button type="button" onclick="generateImage()">Gerar Imagem</button>
+  </form>
+
+  <div id="preview"></div>
+
+  <button id="downloadButton" style="display:none;" onclick="downloadImage()">Baixar Imagem</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+    function generateImage() {
+      // Pegando os valores
+      const bgColor = document.getElementById('bgColor').value;
+      const text1 = document.getElementById('text1').value;
+      const text2 = document.getElementById('text2').value;
+
+      // Preparo da div de visualização
+      const preview = document.getElementById('preview');
+      preview.style.backgroundColor = bgColor;
+      preview.innerHTML = '';
+
+      // Adicionando as imagens
+      const image1 = document.getElementById('image1').files[0];
+      const image2 = document.getElementById('image2').files[0];
+
+      if (image1) {
+        const img1 = document.createElement('img');
+        img1.src = URL.createObjectURL(image1);
+        img1.style.width = '50%';
+        img1.style.top = '0';
+        img1.style.left = '0';
+        preview.appendChild(img1);
+      }
+
+      if (image2) {
+        const img2 = document.createElement('img');
+        img2.src = URL.createObjectURL(image2);
+        img2.style.width = '50%';
+        img2.style.top = '0';
+        img2.style.right = '0';
+        preview.appendChild(img2);
+      }
+
+      // Adicionando os textos
+      const textElement1 = document.createElement('p');
+      textElement1.innerText = text1;
+      textElement1.style.top = '80%';
+      textElement1.style.left = '10%';
+      preview.appendChild(textElement1);
+
+      const textElement2 = document.createElement('p');
+      textElement2.innerText = text2;
+      textElement2.style.top = '85%';
+      textElement2.style.left = '10%';
+      preview.appendChild(textElement2);
+
+      // Exibindo o botão de download
+      document.getElementById('downloadButton').style.display = 'block';
+    }
+
+    function downloadImage() {
+      const preview = document.getElementById('preview');
+
+      html2canvas(preview).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'imagem-gerada.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>
