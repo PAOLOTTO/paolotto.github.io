@@ -79,6 +79,13 @@
       appearance: none;
     }
     
+    .button-container {
+      display: flex;
+      flex-direction: column; /* Stack buttons vertically */
+      align-items: center; /* Center horizontally */
+      margin-top: 20px; /* Adjust margin if needed */
+    }
+
     .inputs-section button {
       background-color: white;
       color: black;
@@ -86,7 +93,8 @@
       font-size: 18px;
       border: 2px solid #000;
       border-radius: 5px;
-      width: 80%;
+      width: 100%;
+      max-width: 300px;
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease;
       margin-top: 20px;
