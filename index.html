@@ -219,11 +219,11 @@
 
       // Add text using a loop
       const textElements = [
-        { text: text1, top: '10%' },
-        { text: text1, top: '20%' },
-        { text: text1, top: '30%' },
-        { text: text1, top: '40%' },
-        { text: text: text2, top: '85%' }
+        { text: text1, top: '10%', left: '10%' },
+        { text: text1, top: '15%', left: '10%' },
+        { text: text1, top: '20%', left: '10%' },
+        { text: text1, top: '25%', left: '10%' },
+        { text: text: text2, top: '85%', left: '55%' }
       ];
 
       textElements.forEach((item, index) => {
@@ -234,7 +234,7 @@
 
         // Set the top position
         textElement.style.top = item.top;
-        textElement.style.left = '10%'; // Consistent left positioning for all text
+        textElement.style.left = item.left;
 
         preview.appendChild(textElement);
       });
