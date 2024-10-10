@@ -210,31 +210,6 @@
     text1 = wordsText1.join(' ');
   }
 
-  // Add the images
-  const image1 = document.getElementById('image1').files[0];
-  const image2 = document.getElementById('image2').files[0];
-
-  if (image1) {
-    const img1 = document.createElement('img');
-    img1.src = URL.createObjectURL(image1);
-    img1.style.width = '40%';
-    img1.style.position = 'absolute'; // Positioning for layering
-    img1.style.top = '15%';
-    img1.style.left = '15%';
-    preview.appendChild(img1);
-  }
-
-  if (image2) {
-    const img2 = document.createElement('img');
-    img2.src = URL.createObjectURL(image2);
-    img2.style.width = '30%';
-    img2.style.position = 'absolute'; // Positioning for layering
-    img2.style.top = '55%';
-    img2.style.right = '20%';
-    preview.appendChild(img2);
-  }
-
-  // Add text with different 'left' values
   const textElements = [
     { text: text1, top: '5%', left: '10%', fontSize: '40px' },
     { text: text1, top: '10%', left: '10%', fontSize: '40px' },
@@ -267,6 +242,30 @@
 
     preview.appendChild(textElement);
   });
+
+  // Add the images
+  const image1 = document.getElementById('image1').files[0];
+  const image2 = document.getElementById('image2').files[0];
+
+  if (image1) {
+    const img1 = document.createElement('img');
+    img1.src = URL.createObjectURL(image1);
+    img1.style.width = '40%';
+    img1.style.position = 'absolute'; // Positioning for layering
+    img1.style.top = '15%';
+    img1.style.left = '15%';
+    preview.appendChild(img1);
+  }
+
+  if (image2) {
+    const img2 = document.createElement('img');
+    img2.src = URL.createObjectURL(image2);
+    img2.style.width = '30%';
+    img2.style.position = 'absolute'; // Positioning for layering
+    img2.style.top = '55%';
+    img2.style.right = '20%';
+    preview.appendChild(img2);
+  }
 
   // Show the download button
   document.getElementById('downloadButton').style.display = 'block';
