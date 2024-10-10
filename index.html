@@ -229,22 +229,22 @@
 
   // Add text with different 'left' values
   const textElements = [
-    { text: text1, top: '5%', left: '10%' },
-    { text: text1, top: '10%', left: '10%' },
-    { text: text1, top: '15%', left: '10%' },
-    { text: text1, top: '20%', left: '10%' },
-    { text: text1, top: '25%', left: '10%' },
-    { text: text1, top: '30%', left: '10%' },
-    { text: text2, top: '55%', left: '5%' },
-    { text: text2, top: '57%', left: '5%' },
-    { text: text2, top: '59%', left: '5%' },
-    { text: text2, top: '61%', left: '5%' },
-    { text: text2, top: '63%', left: '5%' },
-    { text: text2, top: '65%', left: '5%' },
-    { text: text2, top: '67%', left: '5%' },
-    { text: text2, top: '69%', left: '5%' },
-    { text: text2, top: '71%', left: '5%' },
-    { text: text2, top: '73%', left: '5%' }
+    { text: text1, top: '5%', left: '10%', fontSize: '24px' },
+    { text: text1, top: '10%', left: '10%', fontSize: '24px' },
+    { text: text1, top: '15%', left: '10%', fontSize: '24px' },
+    { text: text1, top: '20%', left: '10%', fontSize: '24px' },
+    { text: text1, top: '25%', left: '10%', fontSize: '24px' },
+    { text: text1, top: '30%', left: '10%', fontSize: '24px' },
+    { text: text2, top: '55%', left: '5%', fontSize: '16px' },
+    { text: text2, top: '57%', left: '5%', fontSize: '16px' },
+    { text: text2, top: '59%', left: '5%', fontSize: '16px' },
+    { text: text2, top: '61%', left: '5%', fontSize: '16px' },
+    { text: text2, top: '63%', left: '5%', fontSize: '16px' },
+    { text: text2, top: '65%', left: '5%', fontSize: '16px' },
+    { text: text2, top: '67%', left: '5%', fontSize: '16px' },
+    { text: text2, top: '69%', left: '5%', fontSize: '16px' },
+    { text: text2, top: '71%', left: '5%', fontSize: '16px' },
+    { text: text2, top: '73%', left: '5%', fontSize: '16px' }
   ];
 
   textElements.forEach((item) => {
@@ -253,9 +253,10 @@
     textElement.style.position = 'absolute';
     textElement.style.color = color;
 
-    // Set top and left positions from the array
+    // Set top, left, and font size from the array
     textElement.style.top = item.top;
     textElement.style.left = item.left;
+    textElement.style.fontSize = item.fontSize;
 
     preview.appendChild(textElement);
   });
