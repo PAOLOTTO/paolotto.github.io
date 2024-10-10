@@ -195,7 +195,7 @@
   // Get values from inputs
   const bgColor = document.getElementById('bgColor').value;
   const color = document.getElementById('color').value;
-  let text1 = document.getElementById('text1').value;
+  const text1 = document.getElementById('text1').value;
   const text2 = document.getElementById('text2').value;
 
   // Prepare the preview div
@@ -203,15 +203,15 @@
   preview.style.backgroundColor = bgColor;
   preview.innerHTML = ''; // Clear previous content
 
-  // Add two spaces between the 3rd and 4th word of text1 if more than 3 words
+  // Split text1 into words and insert two non-breaking spaces between the 3rd and 4th word if there are more than 3 words
   let wordsText1 = text1.split(' ');
   if (wordsText1.length > 3) {
-    wordsText1.splice(3, 0, '    '); // Add two spaces between 3rd and 4th word
-    text1 = wordsText1.join(' ');
+    wordsText1.splice(3, 0, '\u00A0\u00A0'); // Add two non-breaking spaces between 3rd and 4th word
+    text0 = wordsText1.join(' ');
   }
 
   const textElements = [
-    { text: text1, top: '0%', left: '8%', fontSize: '38px' },
+    { text: text0, top: '0%', left: '8%', fontSize: '38px' },
     { text: text1, top: '8%', left: '8%', fontSize: '38px' },
     { text: text1, top: '16%', left: '8%', fontSize: '38px' },
     { text: text1, top: '24%', left: '8%', fontSize: '38px' },
