@@ -18,21 +18,25 @@
       height: 100vh;
       justify-content: space-between;
     }
+    
     :root {
     --bgc: #f58b57;
     --txtc: #000;
     }
+    
     h1 {
       font-size: 40px;
       font-weight: 800;
       color: #fff;
       margin-left: 20px;
     }
+    
     /* Layout principal: inputs à esquerda, preview à direita */
     .container {
       display: flex;
       width: 100%;
     }
+    
     .inputs-section {
       width: 40%;
       padding: 20px;
@@ -42,6 +46,7 @@
       justify-content: center;
       align-items: flex-start;
     }
+    
     .inputs-section h1 {
       margin-bottom: 20px;
     }
@@ -87,9 +92,9 @@
     
     .button-container {
       display: flex;
-      flex-direction: column; /* Stack buttons vertically */
-      align-items: center; /* Center horizontally */
-      margin-top: 20px; /* Adjust margin if needed */
+      justify-content: flex-start; /* Align buttons to the left */
+      align-items: center; /* Align vertically in the center */
+      margin-top: 20px;
     }
 
     .inputs-section button {
@@ -99,31 +104,38 @@
       font-size: 18px;
       border: 2px solid #000;
       border-radius: 5px;
-      width: 100%;
-      max-width: 300px;
       cursor: pointer;
       transition: background-color 0.3s ease, color 0.3s ease;
-      margin-top: 20px;
       font-weight: 500;
     }
+    
     .inputs-section button:hover {
       background-color: #000;
       color: #fff;
     }
+
+    #downloadButton {
+      margin-left: 10px; /* Add space between Generate and Download buttons */
+      display: none; /* Hidden by default until needed */
+    }
+    
     #preview-section {
       width: 60%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+    
     #preview {
       width: 500px;
       height: 500px;
       position: relative;
     }
+    
     #preview img {
       position: absolute;
     }
+    
     #preview p {
       position: absolute;
       color: black;
