@@ -191,17 +191,24 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
-    function generateImage() {
+  function generateImage() {
   // Get values from inputs
   const bgColor = document.getElementById('bgColor').value;
   const color = document.getElementById('color').value;
-  const text1 = document.getElementById('text1').value;
+  let text1 = document.getElementById('text1').value;
   const text2 = document.getElementById('text2').value;
 
   // Prepare the preview div
   const preview = document.getElementById('preview');
   preview.style.backgroundColor = bgColor;
   preview.innerHTML = ''; // Clear previous content
+
+  // Add two spaces between the 3rd and 4th word of text1 if more than 3 words
+  let wordsText1 = text1.split(' ');
+  if (wordsText1.length > 3) {
+    wordsText1.splice(3, 0, '  '); // Add two spaces between 3rd and 4th word
+    text1 = wordsText1.join(' ');
+  }
 
   // Add the images
   const image1 = document.getElementById('image1').files[0];
@@ -263,7 +270,7 @@
 
   // Show the download button
   document.getElementById('downloadButton').style.display = 'block';
-  }
+}
     
     function downloadImage() {
   const preview = document.getElementById('preview');
