@@ -19,6 +19,10 @@
       height: 100vh;
       justify-content: space-between;
     }
+    :root {
+    --bgc: #f58b57;
+    --txtc: #000000;
+    }
     h1 {
       font-size: 40px;
       font-weight: 800;
@@ -124,6 +128,12 @@
       font-weight: 800;
       font-size: 24px;
     }
+    .bgc {
+      background-color: var(--bgc)
+    }
+    .txtc {
+      background-color: var(--txtc)
+    }
   </style>
 </head>
 <body>
@@ -136,12 +146,12 @@
       <div class="input-group">
         <div class="form-item">
           <label for="bgColor">Background Color:</label>
-          <input type="color" id="bgColor" name="bgColor" value="#f58b57">
+          <input type="color" id="bgColor" name="bgColor" value="#f58b57" class="bgc">
         </div>
         
         <div class="form-item">
           <label for="color">Text Color:</label>
-          <input type="color" id="color" name="color" value="#000000">
+          <input type="color" id="color" name="color" value="#000000" class="txtc">
         </div>
       </div>
 
@@ -169,7 +179,7 @@
         </div>
       </div>
 
-      <button type="button" onclick="generateImage()">Generate</button>
+      <button type="button" onclick="generateImage(); colorSet()">Generate</button>
       <button id="downloadButton" style="display:none;" onclick="downloadImage()">Download</button>
     </div>
 
@@ -187,7 +197,13 @@
       const color = document.getElementById('color').value;
       const text1 = document.getElementById('text1').value;
       const text2 = document.getElementById('text2').value;
-
+      
+      var r = document.querySelector(':root');
+      function colorSet() {
+        r.style.setProperty('--bgc', bgColor);
+        r.style.setProperty('--txtc', color);
+      }
+      
       // Prepare the preview div
       const preview = document.getElementById('preview');
       preview.style.backgroundColor = bgColor;
