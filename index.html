@@ -216,33 +216,33 @@
   }
 
   const textElements = [
-    { text: text02, top: '0%', left: '20%', fontSize: '30px' },
-    { text: text0, top: '8%', left: '20%', fontSize: '30px' },
-    { text: text0, top: '16%', left: '20%', fontSize: '30px' },
-    { text: text0, top: '24%', left: '20%', fontSize: '30px' },
-    { text: text0, top: '32%', left: '20%', fontSize: '30px' },
-    { text: text0, top: '40%', left: '20%', fontSize: '30px' },
-    { text: text01, top: '48%', left: '8%', fontSize: '30px' },
-    { text: text2, top: '52%', left: '10%', fontSize: '14px' },
-    { text: text2, top: '56%', left: '10%', fontSize: '14px' },
-    { text: text2, top: '60%', left: '10%', fontSize: '14px' },
-    { text: text2, top: '64%', left: '10%', fontSize: '14px' },
-    { text: text2, top: '68%', left: '10%', fontSize: '14px' },
-    { text: text2, top: '72%', left: '10%', fontSize: '14px' },
-    { text: text2, top: '76%', left: '10%', fontSize: '14px' },
-    { text: text2, top: '80%', left: '10%', fontSize: '14px' },
-    { text: text2, top: '84%', left: '10%', fontSize: '14px' },
-    { text: text2, top: '88%', left: '10%', fontSize: '14px' },
-    { text: text2, top: '52%', left: '60%', fontSize: '14px' },
-    { text: text2, top: '56%', left: '60%', fontSize: '14px' },
-    { text: text2, top: '60%', left: '60%', fontSize: '14px' },
-    { text: text2, top: '64%', left: '60%', fontSize: '14px' },
-    { text: text2, top: '68%', left: '60%', fontSize: '14px' },
-    { text: text2, top: '72%', left: '60%', fontSize: '14px' },
-    { text: text2, top: '76%', left: '60%', fontSize: '14px' },
-    { text: text2, top: '80%', left: '60%', fontSize: '14px' },
-    { text: text2, top: '84%', left: '60%', fontSize: '14px' },
-    { text: text2, top: '88%', left: '60%', fontSize: '14px' }
+    { text: text02, top: '0%', left: '15%', fontSize: '30px', fontWeight: '700' },
+    { text: text0, top: '8%', left: '15%', fontSize: '30px', fontWeight: '700' },
+    { text: text0, top: '16%', left: '15%', fontSize: '30px', fontWeight: '700' },
+    { text: text0, top: '24%', left: '15%', fontSize: '30px', fontWeight: '700' },
+    { text: text0, top: '32%', left: '15%', fontSize: '30px', fontWeight: '700' },
+    { text: text0, top: '40%', left: '15%', fontSize: '30px', fontWeight: '700' },
+    { text: text01, top: '48%', left: '15%', fontSize: '30px', fontWeight: '700' },
+    { text: text2, top: '52%', left: '10%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '56%', left: '10%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '60%', left: '10%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '64%', left: '10%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '68%', left: '10%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '72%', left: '10%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '76%', left: '10%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '80%', left: '10%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '84%', left: '10%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '88%', left: '10%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '52%', left: '60%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '56%', left: '60%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '60%', left: '60%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '64%', left: '60%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '68%', left: '60%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '72%', left: '60%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '76%', left: '60%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '80%', left: '60%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '84%', left: '60%', fontSize: '14px', fontWeight: '600' },
+    { text: text2, top: '88%', left: '60%', fontSize: '14px', fontWeight: '600' }
   ];
 
   textElements.forEach((item) => {
@@ -255,6 +255,7 @@
     textElement.style.top = item.top;
     textElement.style.left = item.left;
     textElement.style.fontSize = item.fontSize;
+    textElement.style.fontWeight = item.fontWeight;
 
     preview.appendChild(textElement);
   });
