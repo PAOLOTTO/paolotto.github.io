@@ -207,17 +207,21 @@
   // Split text1 into words and insert two non-breaking spaces between the 3rd and 4th word if there are more than 3 words
   let wordsText1 = text1.split(' ');
   if (wordsText1.length > 3) {
-    wordsText1.splice(3, 0, '\u00A0\u00A0'); // Add two non-breaking spaces between 3rd and 4th word
+    wordsText1.splice(3, 0, '\u00A0'); // Add two non-breaking spaces between 3rd and 4th word
     text0 = wordsText1.join(' ');
+    wordsText1.splice(3, 0, '\u00A0'); // Add two non-breaking spaces between 3rd and 4th word
+    text01 = wordsText1.join(' ');
+    wordsText1.splice(3, 0, '\u00A0\u00A0'); // Add two non-breaking spaces between 3rd and 4th word
+    text02 = wordsText1.join(' ');
   }
 
   const textElements = [
-    { text: text0, top: '0%', left: '8%', fontSize: '38px' },
-    { text: text1, top: '8%', left: '8%', fontSize: '38px' },
-    { text: text1, top: '16%', left: '8%', fontSize: '38px' },
-    { text: text1, top: '24%', left: '8%', fontSize: '38px' },
-    { text: text1, top: '32%', left: '8%', fontSize: '38px' },
-    { text: text1, top: '48%', left: '8%', fontSize: '38px' },
+    { text: text02, top: '0%', left: '8%', fontSize: '38px' },
+    { text: text0, top: '8%', left: '8%', fontSize: '38px' },
+    { text: text0, top: '16%', left: '8%', fontSize: '38px' },
+    { text: text0, top: '24%', left: '8%', fontSize: '38px' },
+    { text: text0, top: '32%', left: '8%', fontSize: '38px' },
+    { text: text01, top: '48%', left: '8%', fontSize: '38px' },
     { text: text2, top: '60%', left: '5%', fontSize: '16px' },
     { text: text2, top: '63%', left: '5%', fontSize: '16px' },
     { text: text2, top: '66%', left: '5%', fontSize: '16px' },
