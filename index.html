@@ -192,73 +192,67 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
     function generateImage() {
-      // Get values from inputs
-      const bgColor = document.getElementById('bgColor').value;
-      const color = document.getElementById('color').value;
-      const text1 = document.getElementById('text1').value;
-      const text2 = document.getElementById('text2').value;
-      
-      var r = document.querySelector(':root');
-      function colorSet() {
-        r.style.setProperty('--bgc', bgColor);
-        r.style.setProperty('--txtc', color);
-      }
-      
-      // Prepare the preview div
-      const preview = document.getElementById('preview');
-      preview.style.backgroundColor = bgColor;
-      preview.innerHTML = ''; // Clear previous content
+  // Get values from inputs
+  const bgColor = document.getElementById('bgColor').value;
+  const color = document.getElementById('color').value;
+  const text1 = document.getElementById('text1').value;
+  const text2 = document.getElementById('text2').value;
 
-      // Add the images
-      const image1 = document.getElementById('image1').files[0];
-      const image2 = document.getElementById('image2').files[0];
+  // Prepare the preview div
+  const preview = document.getElementById('preview');
+  preview.style.backgroundColor = bgColor;
+  preview.innerHTML = ''; // Clear previous content
 
-      if (image1) {
-        const img1 = document.createElement('img');
-        img1.src = URL.createObjectURL(image1);
-        img1.style.width = '50%';
-        img1.style.position = 'absolute'; // Positioning for layering
-        img1.style.top = '15%';
-        img1.style.left = '15%';
-        preview.appendChild(img1);
-      }
+  // Add the images
+  const image1 = document.getElementById('image1').files[0];
+  const image2 = document.getElementById('image2').files[0];
 
-      if (image2) {
-        const img2 = document.createElement('img');
-        img2.src = URL.createObjectURL(image2);
-        img2.style.width = '40%';
-        img2.style.position = 'absolute'; // Positioning for layering
-        img2.style.top = '40%';
-        img2.style.right = '20%';
-        preview.appendChild(img2);
-      }
+  if (image1) {
+    const img1 = document.createElement('img');
+    img1.src = URL.createObjectURL(image1);
+    img1.style.width = '50%';
+    img1.style.position = 'absolute'; // Positioning for layering
+    img1.style.top = '15%';
+    img1.style.left = '15%';
+    preview.appendChild(img1);
+  }
 
-      // Add text using a loop
-      const textElements = [
-        { text: text1, top: '10%' },
-        { text: text1, top: '15%' },
-        { text: text1, top: '20%' },
-        { text: text1, top: '25%' },
-        { text: text2, top: '85%' }
-      ];
+  if (image2) {
+    const img2 = document.createElement('img');
+    img2.src = URL.createObjectURL(image2);
+    img2.style.width = '40%';
+    img2.style.position = 'absolute'; // Positioning for layering
+    img2.style.top = '40%';
+    img2.style.right = '20%';
+    preview.appendChild(img2);
+  }
 
-      textElements.forEach((item, index) => {
-        const textElement = document.createElement('p');
-        textElement.innerText = item.text;
-        textElement.style.position = 'absolute'; // Ensure text is positioned absolutely
-        textElement.style.color = color;
+  // Add text with different 'left' values
+  const textElements = [
+    { text: text1, top: '10%', left: '10%' },
+    { text: text1, top: '20%', left: '20%' },
+    { text: text1, top: '30%', left: '30%' },
+    { text: text1, top: '40%', left: '40%' },
+    { text: text2, top: '85%', left: '50%' }
+  ];
 
-        // Set the top position
-        textElement.style.top = item.top;
-        textElement.style.left = '10%'; // Consistent left positioning for all text
+  textElements.forEach((item) => {
+    const textElement = document.createElement('p');
+    textElement.innerText = item.text;
+    textElement.style.position = 'absolute';
+    textElement.style.color = color;
 
-        preview.appendChild(textElement);
-      });
+    // Set top and left positions from the array
+    textElement.style.top = item.top;
+    textElement.style.left = item.left;
 
-      // Show the download button
-      document.getElementById('downloadButton').style.display = 'block';
-    }
+    preview.appendChild(textElement);
+  });
 
+  // Show the download button
+  document.getElementById('downloadButton').style.display = 'block';
+  }
+    
     function downloadImage() {
   const preview = document.getElementById('preview');
 
