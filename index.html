@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Photo Grid with Descriptions</title>
+    <style>
+        /* Reset some default browser styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Set background color */
+        body {
+            background-color: #0000ff; /* Blue background */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Title style */
+        header {
+            color: #ffffff; /* White title */
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Container for the grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns on normal computer screens */
+            gap: 20px;
+            padding: 100px 20px 20px 20px; /* Padding from top for header space */
+        }
+
+        /* Responsive behavior */
+        @media (max-width: 1200px) {
+            .photo-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns for smaller screens */
+            }
+        }
+
+        @media (max-width: 900px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .photo-grid {
+                grid-template-columns: 1fr; /* 1 column for mobile devices */
+            }
+        }
+
+        /* Style for each photo card */
+        .photo-item {
+            text-align: center;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item img:hover {
+            transform: scale(1.05); /* Zoom effect on hover */
+        }
+
+        /* Description text */
+        .photo-item p {
+            color: #ffffff; /* White text */
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        /* Links styling */
+        .photo-item a {
+            text-decoration: none;
+            color: inherit; /* Inherit white color for links */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with title -->
+    <header>
+        My Photo Gallery
+    </header>
+
+    <!-- Photo grid section -->
+    <div class="photo-grid">
+        <!-- Photo 1 -->
+        <div class="photo-item">
+            <a href="https://example.com/photo1">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image 1">
+                <p>Description for Photo 1</p>
+            </a>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="photo-item">
+            <a href="https://example.com/photo2">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image 2">
+                <p>Description for Photo 2</p>
+            </a>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="photo-item">
+            <a href="https://example.com/photo3">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image 3">
+                <p>Description for Photo 3</p>
+            </a>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="photo-item">
+            <a href="https://example.com/photo4">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image 4">
+                <p>Description for Photo 4</p>
+            </a>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="photo-item">
+            <a href="https://example.com/photo5">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image 5">
+                <p>Description for Photo 5</p>
+            </a>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="photo-item">
+            <a href="https://example.com/photo6">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image 6">
+                <p>Description for Photo 6</p>
+            </a>
+        </div>
+
+        <!-- Photo 7 -->
+        <div class="photo-item">
+            <a href="https://example.com/photo7">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image 7">
+                <p>Description for Photo 7</p>
+            </a>
+        </div>
+
+        <!-- Photo 8 -->
+        <div class="photo-item">
+            <a href="https://example.com/photo8">
+                <img src="https://via.placeholder.com/300" alt="Placeholder Image 8">
+                <p>Description for Photo 8</p>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
