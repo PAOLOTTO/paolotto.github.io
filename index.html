@@ -43,65 +43,6 @@
         /* Responsive behavior */
         @media (max-width: 1200px) {
             .photo-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
-            }
-        }
-
-        @media (max-width: 900px) {
-            .photo-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
-            }
-        }
-
-        @media (max-width: 600px) {
-            .photo-grid {
-                grid-template-columns: 1fr; /* 1 column for mobile devices */
-            }
-        }
-
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Photo Grid with Descriptions</title>
-    <style>
-        /* Reset some default browser styles */
-        body, html {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Set background color */
-        body {
-            background-color: #0000ff; /* Blue background */
-            font-family: Arial, sans-serif;
-        }
-
-        /* Title style */
-        header {
-            color: #ffffff; /* White title */
-            font-size: 2rem;
-            font-weight: bold;
-            padding: 20px;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        /* Centering the grid */
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns on normal screens */
-            gap: 20px;
-            justify-content: center; /* Center the grid horizontally */
-            padding: 100px 20px 20px 20px; /* Padding for header space */
-        }
-
-        /* Responsive behavior */
-        @media (max-width: 1200px) {
-            .photo-grid {
                 grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
             }
         }
