@@ -17,7 +17,21 @@
       display: flex;
       height: 100vh;
       justify-content: space-between;
+      position: relative; /* Add this to allow absolute positioning within the body */
     }
+
+  .home-link {
+    position: absolute;
+    top: 20px;  /* Distance from the top of the page */
+    left: 20px;  /* Distance from the left side */
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+    .home-link:hover {
+      text-decoration: overline;  /* Add overline when hovered */
+    }   
     
     :root {
     --bgc: #f58b57;
@@ -157,6 +171,7 @@
   </style>
 </head>
 <body>
+  <a href="https://yourlink.com" class="home-link">← home</a>
   <div class="container">
     <!-- Seção de inputs à esquerda -->
     <div class="inputs-section">
