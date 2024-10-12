@@ -31,16 +31,14 @@
             left: 0;
         }
 
-        /* Container for the grid */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns on normal screens */
-            gap: 20px;
+            gap: 10px; /* Reduced gap between grid items */
             justify-content: center; /* Center the grid horizontally */
             padding: 100px 20px 20px 20px; /* Padding for header space */
         }
 
-        /* Responsive behavior */
         @media (max-width: 1200px) {
             .photo-grid {
                 grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
@@ -65,7 +63,7 @@
         }
 
         .photo-item img {
-            width: 200px; /* Smaller photos */
+            width: 250px; /* Slightly bigger photos */
             height: auto;
             display: block;
             border-radius: 8px;
@@ -81,7 +79,7 @@
         .photo-item p {
             color: #ffffff; /* White text */
             font-size: 1rem;
-            margin-top: 8px;
+            margin-top: 5px; /* Reduced space between image and description */
         }
 
         /* Links styling */
