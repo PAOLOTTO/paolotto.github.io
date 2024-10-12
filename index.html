@@ -34,12 +34,12 @@
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columns on normal screens */
-            grid-column-gap: 0px; /* Space between columns */
-            grid-row-gap: 0px; /* Closer rows */
+            grid-gap: 0px;
             justify-content: center; /* Center the grid horizontally */
             padding: 100px 20px 20px 20px; /* Padding for header space */
         }
 
+        /* Responsive behavior */
         @media (max-width: 1200px) {
             .photo-grid {
                 grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
@@ -64,11 +64,11 @@
         }
 
         .photo-item img {
-            width: 280px; /* Slightly bigger photos */
+            width: 250px; /* Slightly bigger photos */
             height: auto;
             display: block;
             border-radius: 8px;
-            margin: 0 auto; /* Center the image */
+            margin: 5px; /* Small margin around photos to bring them closer */
             transition: transform 0.3s ease;
         }
 
