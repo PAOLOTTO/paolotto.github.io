@@ -36,7 +36,7 @@
     
     :root {
     --bgc: #eea4bb;
-    --txtc: #fff;
+    --txtc: #000;
     }
     
     h1 {
@@ -154,9 +154,10 @@
     
     #preview p {
       position: absolute;
+      font-family: "Courier Prime", monospace;
+      font-weight: 400;
+      font-style: normal;
       color: black;
-      font-weight: 700;
-      font-size: 24px;
     }
 
     #bgColor {
@@ -188,7 +189,7 @@
         
         <div class="form-item">
           <label for="color">Text Color:</label>
-          <input type="color" id="color" name="color" value="#fff">
+          <input type="color" id="color" name="color" value="#000">
         </div>
       </div>
     
@@ -236,8 +237,8 @@
 
 
     const textElements = [
-      { text: text1, top: '85%', left: '15%', fontSize: '24px', fontWeight: '700' },
-      { text: text2, top: '88%', left: '60%', fontSize: '24px', fontWeight: '700' }
+      { text: text1, top: '85%', left: '15%', fontSize: '18px', fontWeight: '400' },
+      { text: text2, top: '88%', left: '60%', fontSize: '18px', fontWeight: '400' }
     ];
 
     textElements.forEach(item => {
