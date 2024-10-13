@@ -36,7 +36,7 @@
     
     :root {
     --bgc: #eea4bb;
-    --txtc: #000;
+    --txtc: #fff;
     }
     
     h1 {
@@ -87,6 +87,7 @@
     }
     
     .inputs-section label {
+      color: #fff;
       font-size: 14px;
       margin-bottom: 5px;
     }
@@ -163,7 +164,7 @@
       appearance: none; /* Remove the native appearance */
       -webkit-appearance: none;
     }
-
+    
     #color {
       background-color: var(--txtc);
       appearance: none; /* Remove the native appearance */
@@ -184,8 +185,13 @@
           <label for="bgColor">Background Color:</label>
           <input type="color" id="bgColor" name="bgColor" value="#eea4bb">
         </div>
+        
+        <div class="form-item">
+          <label for="color">Text Color:</label>
+          <input type="color" id="color" name="color" value="#fff">
+        </div>
       </div>
-
+    
       <div class="input-group">
         <div class="form-item">
           <label for="image1">Image:</label>
@@ -228,44 +234,10 @@
     preview.style.backgroundColor = bgColor;
     preview.innerHTML = '';
 
-    let wordsText1 = text1.split(' ');
-    if (wordsText1.length > 3) {
-      wordsText1.splice(3, 0, '\u00A0');
-      text0 = wordsText1.join(' ');
-      wordsText1.splice(3, 0, '\u00A0');
-      text01 = wordsText1.join(' ');
-      wordsText1.splice(3, 0, '\u00A0\u00A0');
-      text02 = wordsText1.join(' ');
-    }
 
     const textElements = [
-      { text: text02, top: '0%', left: '15%', fontSize: '30px', fontWeight: '700' },
-      { text: text0, top: '7%', left: '15%', fontSize: '30px', fontWeight: '700' },
-      { text: text0, top: '14%', left: '15%', fontSize: '30px', fontWeight: '700' },
-      { text: text0, top: '21%', left: '15%', fontSize: '30px', fontWeight: '700' },
-      { text: text0, top: '28%', left: '15%', fontSize: '30px', fontWeight: '700' },
-      { text: text0, top: '35%', left: '15%', fontSize: '30px', fontWeight: '700' },
-      { text: text01, top: '48%', left: '15%', fontSize: '30px', fontWeight: '700' },
-      { text: text2, top: '52%', left: '10%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '56%', left: '10%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '60%', left: '10%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '64%', left: '10%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '68%', left: '10%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '72%', left: '10%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '76%', left: '10%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '80%', left: '10%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '84%', left: '10%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '88%', left: '10%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '52%', left: '60%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '56%', left: '60%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '60%', left: '60%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '64%', left: '60%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '68%', left: '60%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '72%', left: '60%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '76%', left: '60%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '80%', left: '60%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '84%', left: '60%', fontSize: '14px', fontWeight: '600' },
-      { text: text2, top: '88%', left: '60%', fontSize: '14px', fontWeight: '600' }
+      { text: text1, top: '85%', left: '15%', fontSize: '24px', fontWeight: '700' },
+      { text: text2, top: '88%', left: '60%', fontSize: '24px', fontWeight: '700' }
     ];
 
     textElements.forEach(item => {
@@ -282,26 +254,15 @@
 
     // Add the images
   const image1 = document.getElementById('image1').files[0];
-  const image2 = document.getElementById('image2').files[0];
 
   if (image1) {
     const img1 = document.createElement('img');
     img1.src = URL.createObjectURL(image1);
-    img1.style.width = '45%';
+    img1.style.width = '70%';
     img1.style.position = 'absolute'; // Positioning for layering
-    img1.style.top = '27%';
+    img1.style.top = '10%%';
     img1.style.left = '15%';
     preview.appendChild(img1);
-  }
-
-  if (image2) {
-    const img2 = document.createElement('img');
-    img2.src = URL.createObjectURL(image2);
-    img2.style.width = '35%';
-    img2.style.position = 'absolute'; // Positioning for layering
-    img2.style.top = '69%';
-    img2.style.right = '25%';
-    preview.appendChild(img2);
   }
 
     document.getElementById('downloadButton').style.display = 'block';
@@ -318,7 +279,7 @@
   function downloadImage() {
     html2canvas(document.getElementById('preview')).then(canvas => {
       const link = document.createElement('a');
-      link.download = 'album-cover.png';
+      link.download = 'igor.png';
       link.href = canvas.toDataURL();
       link.click();
     });
