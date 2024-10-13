@@ -327,7 +327,7 @@
   function downloadImage() {
     html2canvas(document.getElementById('preview')).then(canvas => {
       const link = document.createElement('a');
-      link.download = 'album-cover.png';
+      link.download = 'thelifeof.png';
       link.href = canvas.toDataURL();
       link.click();
     });
