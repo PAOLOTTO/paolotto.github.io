@@ -199,7 +199,7 @@
         
         <div class="form-item">
           <label for="pixelation">Pixelation Rate:</label>
-          <input type="range" id="pixelation">
+          <input type="range" id="pixelation" max="20" min="1">
         </div>
       </div>
 
@@ -228,8 +228,8 @@
 
     // Create a new square div
     const square = document.createElement('div');
-    square.style.width = '200px'; // Adjust size as needed
-    square.style.height = '200px'; // Adjust size as needed
+    square.style.width = '20%'; // Adjust size as needed
+    square.style.height = '20%'; // Adjust size as needed
     square.style.backgroundColor = borderColor;
     square.style.position = 'absolute';
     square.style.top = '50%';
@@ -243,14 +243,14 @@
       const img1 = document.createElement('img');
       img1.src = URL.createObjectURL(image1);
       img1.style.position = 'absolute';
-      img1.style.top = '27%';
-      img1.style.left = '15%';
-      img1.style.width = `${100 / pixelationRate}%`; // Shrink the image to create pixelation
+      img1.style.width = `${45 / pixelationRate}%`; // Shrink the image to create pixelation
       img1.style.height = 'auto';
       img1.style.imageRendering = 'pixelated'; // Pixelate the image
       img1.style.transform = `scale(${pixelationRate})`; // Scale it back up
       img1.style.transformOrigin = '0 0'; // Keep the image in the same place
-
+      img1.style.top = '50%';
+      img1.style.left = '50%';
+      img1.style.transform = 'translate(-50%, -50%)'; // Center the square
       preview.appendChild(img1);
     }
 
