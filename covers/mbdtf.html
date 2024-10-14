@@ -229,8 +229,9 @@
 
     const preview = document.getElementById('preview');
     preview.style.backgroundColor = bgColor;
-    preview.innerHTML = '';
+    preview.innerHTML = ''; // Clear previous content only once, at the start
 
+    // Add the square
     const square = document.createElement('div');
     square.style.width = '45%';
     square.style.height = '45%';
@@ -268,16 +269,23 @@
 
         // Draw the scaled image back onto the main canvas (this will pixelate it)
         ctx.imageSmoothingEnabled = false; // Disable smoothing for pixelated effect
-        ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, 0, 0, canvas.width / 4, canvas.height / 4);
 
-        // Clear the preview and append only the canvas
-        preview.innerHTML = ''; // Clear the preview again to make sure only the canvas shows
+        // Define the final size for the pixelated image (a little smaller than the square, i.e., 40% of canvas)
+        const finalWidth = canvas.width * 0.4;
+        const finalHeight = canvas.height * 0.4;
+
+        // Center the pixelated image in the square
+        const offsetX = (canvas.width - finalWidth) / 2;
+        const offsetY = (canvas.height - finalHeight) / 2;
+        ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, offsetX, offsetY, finalWidth, finalHeight);
+
+        // Append the canvas without clearing the square
         preview.appendChild(canvas);
       };
     }
 
     document.getElementById('downloadButton').style.display = 'block';
-  }
+}
 
   function colorSet() {
     const bgColorInput = document.getElementById('bgColor');
