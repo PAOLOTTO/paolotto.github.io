@@ -241,27 +241,6 @@
     square.style.transform = 'translate(-50%, -50%)'; // Center the square
     preview.appendChild(square);
 
-    
-  function generateImage() {
-    const bgColor = document.getElementById('bgColor').value;
-    const borderColor = document.getElementById('color').value;
-    const pixelationRate = document.getElementById('pixelation').value || 1; // Default to 1 if no value set
-
-    const preview = document.getElementById('preview');
-    preview.style.backgroundColor = bgColor;
-    preview.innerHTML = ''; // Clear previous content
-
-    // Create a new square div
-    const square = document.createElement('div');
-    square.style.width = '200px'; // Adjust size as needed
-    square.style.height = '200px'; // Adjust size as needed
-    square.style.backgroundColor = borderColor;
-    square.style.position = 'absolute';
-    square.style.top = '50%';
-    square.style.left = '50%';
-    square.style.transform = 'translate(-50%, -50%)'; // Center the square
-    preview.appendChild(square);
-
     // Add the image (if selected) with pixelation effect
     const image1 = document.getElementById('image1').files[0];
     if (image1) {
@@ -272,7 +251,7 @@
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
 
-        // Set the canvas size to the preview size
+        // Set canvas size
         canvas.width = 500;
         canvas.height = 500;
 
@@ -280,12 +259,16 @@
         const scaledWidth = Math.floor(canvas.width / pixelationRate);
         const scaledHeight = Math.floor(canvas.height / pixelationRate);
 
-        // Create a smaller image by drawing the image at reduced size
-        ctx.drawImage(img1, 0, 0, scaledWidth, scaledHeight);
+        // Draw the image on a smaller canvas for pixelation
+        const tempCanvas = document.createElement('canvas');
+        const tempCtx = tempCanvas.getContext('2d');
+        tempCanvas.width = scaledWidth;
+        tempCanvas.height = scaledHeight;
+        tempCtx.drawImage(img1, 0, 0, scaledWidth, scaledHeight);
 
-        // Scale it back up to full size to create pixelation effect
-        ctx.imageSmoothingEnabled = false;
-        ctx.drawImage(canvas, 0, 0, scaledWidth, scaledHeight, 0, 0, canvas.width, canvas.height);
+        // Draw the scaled image back onto the main canvas (this will pixelate it)
+        ctx.imageSmoothingEnabled = false; // Disable smoothing for pixelated effect
+        ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, 0, 0, canvas.width, canvas.height);
 
         // Clear the preview and append only the canvas
         preview.innerHTML = ''; // Clear the preview again to make sure only the canvas shows
@@ -307,7 +290,7 @@
   function downloadImage() {
     html2canvas(document.getElementById('preview')).then(canvas => {
       const link = document.createElement('a');
-      link.download = 'thelifeof.png';
+      link.download = 'mbdtf.png';
       link.href = canvas.toDataURL();
       link.click();
     });
