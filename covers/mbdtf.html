@@ -171,9 +171,61 @@
       -webkit-appearance: none;
     }
 
-    .accent {
-            accent-color: #191919;
-        }
+    
+    /* Style for the range input track */
+.inputs-section input[type="range"] {
+  -webkit-appearance: none; /* Remove default styles */
+  appearance: none; /* Remove default styles */
+  width: 100%; /* Full width */
+  height: 8px; /* Height of the track */
+  background: #ddd; /* Track color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Style for the range input thumb */
+.inputs-section input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default styles */
+  appearance: none; /* Remove default styles */
+  width: 20px; /* Thumb width */
+  height: 20px; /* Thumb height */
+  background: #f2274c; /* Thumb color */
+  border-radius: 50%; /* Make it round */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Firefox */
+.inputs-section input[type="range"]::-moz-range-thumb {
+  width: 20px; /* Thumb width */
+  height: 20px; /* Thumb height */
+  background: #f2274c; /* Thumb color */
+  border-radius: 50%; /* Make it round */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+/* IE */
+.inputs-section input[type="range"]::-ms-thumb {
+  width: 20px; /* Thumb width */
+  height: 20px; /* Thumb height */
+  background: #f2274c; /* Thumb color */
+  border-radius: 50%; /* Make it round */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Style for the range input track (in Firefox) */
+.inputs-section input[type="range"]::-moz-range-track {
+  height: 8px; /* Height of the track */
+  background: #ddd; /* Track color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Style for the range input track (in IE) */
+.inputs-section input[type="range"]::-ms-track {
+  height: 8px; /* Height of the track */
+  background: #ddd; /* Track color */
+  border-radius: 5px; /* Rounded corners */
+  border: none; /* Remove border */
+}
+    
   </style>
 </head>
 <body>
@@ -204,7 +256,7 @@
         
         <div class="form-item">
           <label for="pixelation">Pixelation Rate:</label>
-          <input type="range" id="pixelation" max="25" min="1" class="accent" value="20">
+          <input type="range" id="pixelation" max="25" min="1" value="20">
         </div>
       </div>
 
