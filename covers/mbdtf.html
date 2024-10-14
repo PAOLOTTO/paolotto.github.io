@@ -268,7 +268,7 @@
 
         // Draw the scaled image back onto the main canvas (this will pixelate it)
         ctx.imageSmoothingEnabled = false; // Disable smoothing for pixelated effect
-        ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, 0, 0, canvas.width / 4, canvas.height / 4);
 
         // Clear the preview and append only the canvas
         preview.innerHTML = ''; // Clear the preview again to make sure only the canvas shows
