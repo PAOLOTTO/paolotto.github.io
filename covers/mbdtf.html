@@ -229,8 +229,8 @@
 
     // Create a new square div
     const square = document.createElement('div');
-    square.style.width = '20%'; // Adjust size as needed
-    square.style.height = '20%'; // Adjust size as needed
+    square.style.width = '40%'; // Adjust size as needed
+    square.style.height = '40%'; // Adjust size as needed
     square.style.backgroundColor = borderColor;
     square.style.position = 'absolute';
     square.style.top = '50%';
@@ -244,7 +244,7 @@
       const img1 = document.createElement('img');
       img1.src = URL.createObjectURL(image1);
       img1.style.position = 'absolute';
-      img1.style.width = `${45 / pixelationRate}%`; // Shrink the image to create pixelation
+      img1.style.width = `${80 / pixelationRate}%`; // Shrink the image to create pixelation
       img1.style.height = 'auto';
       img1.style.imageRendering = 'pixelated'; // Pixelate the image
       img1.style.transform = `scale(${pixelationRate})`; // Scale it back up
