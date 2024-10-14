@@ -282,15 +282,12 @@
     }
 
     // Add the pre-given image in the bottom-right corner
-    const Img = new Image();
-    Img.src = './assets/pa.png'; // Update with the actual image path or URL
-    Img.onload = function() {
-      const size = 100; // Set size for the pre-given image (adjust as needed)
-      Img.style.width = size + 'px';
-      Img.style.height = size + 'px';
-      Img.style.position = 'absolute';
-      Img.style.bottom = '10px'; // Position near the bottom
-      Img.style.right = '10px';  // Position near the right
+    const imgPA = new Image();
+    imgPA.src = './assets/pa.png'
+    img1.style.width = '80%';
+    img1.style.position = 'absolute'; // Positioning for layering
+    img1.style.top = '80%';
+    img1.style.left = '80%';
 
       // Append the pre-given image to the preview
       preview.appendChild(Img);
