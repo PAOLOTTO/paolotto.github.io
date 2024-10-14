@@ -252,9 +252,10 @@
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
 
-        // Set canvas size
-        canvas.width = 500;
-        canvas.height = 500;
+        // Set canvas size to be the same as the square
+        const squareSize = Math.floor(500 * 0.45); // 45% of 500px
+        canvas.width = squareSize;
+        canvas.height = squareSize;
 
         // Calculate scaled size based on pixelation rate
         const scaledWidth = Math.floor(canvas.width / pixelationRate);
@@ -270,17 +271,17 @@
         // Draw the scaled image back onto the main canvas (this will pixelate it)
         ctx.imageSmoothingEnabled = false; // Disable smoothing for pixelated effect
 
-        // Define the final size for the pixelated image (a little smaller than the square, i.e., 40% of canvas)
-        const finalWidth = canvas.width * 0.4;
-        const finalHeight = canvas.height * 0.4;
+        // Define the final size for the pixelated image (a little smaller than the square, e.g., 40% of the square)
+        const finalWidth = squareSize * 0.9; // 90% of square size
+        const finalHeight = squareSize * 0.9;
 
-        // Center the pixelated image in the square
-        const offsetX = (canvas.width - finalWidth) / 2;
-        const offsetY = (canvas.height - finalHeight) / 2;
+        // Center the pixelated image within the square
+        const offsetX = (squareSize - finalWidth) / 2;
+        const offsetY = (squareSize - finalHeight) / 2;
         ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, offsetX, offsetY, finalWidth, finalHeight);
 
-        // Append the canvas without clearing the square
-        preview.appendChild(canvas);
+        // Append the canvas to the square div (so it's inside the square and not replacing it)
+        square.appendChild(canvas);
       };
     }
 
