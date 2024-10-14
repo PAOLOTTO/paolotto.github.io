@@ -225,16 +225,15 @@
   function generateImage() {
     const bgColor = document.getElementById('bgColor').value;
     const borderColor = document.getElementById('color').value;
-    const pixelationRate = document.getElementById('pixelation').value || 1; // Default to 1 if no value set
+    const pixelationRate = document.getElementById('pixelation').value;
 
     const preview = document.getElementById('preview');
     preview.style.backgroundColor = bgColor;
-    preview.innerHTML = ''; // Clear previous content
+    preview.innerHTML = '';
 
-    // Create a new square div
     const square = document.createElement('div');
-    square.style.width = '40%'; // Adjust size as needed
-    square.style.height = '40%'; // Adjust size as needed
+    square.style.width = '40%';
+    square.style.height = '40%';
     square.style.backgroundColor = borderColor;
     square.style.position = 'absolute';
     square.style.top = '50%';
@@ -245,18 +244,29 @@
     // Add the image (if selected) with pixelation effect
     const image1 = document.getElementById('image1').files[0];
     if (image1) {
-      const img1 = document.createElement('img');
+      const img1 = new Image();
       img1.src = URL.createObjectURL(image1);
-      img1.style.position = 'absolute';
-      img1.style.width = `${200 / pixelationRate}%`; // Shrink the image to create pixelation
-      img1.style.height = 'auto';
-      img1.style.imageRendering = 'pixelated'; // Pixelate the image
-      img1.style.transform = `scale(${pixelationRate})`; // Scale it back up
-      img1.style.transformOrigin = '0 0'; // Keep the image in the same place
-      img1.style.top = '50%';
-      img1.style.left = '50%';
-      img1.style.transform = 'translate(-50%, -50%)'; // Center the square
-      preview.appendChild(img1);
+
+      img1.onload = function() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = 500;
+        canvas.height = 500;
+
+        // Draw the image smaller and pixelate
+        const scaledWidth = Math.floor(canvas.width / pixelationRate);
+        const scaledHeight = Math.floor(canvas.height / pixelationRate);
+
+        // Create a smaller image by drawing the image at reduced size
+        ctx.drawImage(img1, 0, 0, scaledWidth, scaledHeight);
+
+        // Scale it back up to full size to create pixelation effect
+        ctx.imageSmoothingEnabled = false;
+        ctx.drawImage(canvas, 0, 0, scaledWidth, scaledHeight, 0, 0, canvas.width, canvas.height);
+
+        preview.appendChild(canvas);
+      };
     }
 
     document.getElementById('downloadButton').style.display = 'block';
