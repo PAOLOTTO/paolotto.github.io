@@ -286,18 +286,18 @@
     }
 
     // Add the pre-given image in the bottom-right corner
-    const preGivenImg = new Image();
-    preGivenImg.src = './assets/pa.png'; // Update with the actual image path or URL
-    preGivenImg.onload = function() {
+    const Img = new Image();
+    Img.src = './assets/pa.png'; // Update with the actual image path or URL
+    Img.onload = function() {
       const size = 100; // Set size for the pre-given image (adjust as needed)
-      preGivenImg.style.width = size + 'px';
-      preGivenImg.style.height = size + 'px';
-      preGivenImg.style.position = 'absolute';
-      preGivenImg.style.bottom = '10px'; // Position near the bottom
-      preGivenImg.style.right = '10px';  // Position near the right
+      Img.style.width = size + 'px';
+      Img.style.height = size + 'px';
+      Img.style.position = 'absolute';
+      Img.style.bottom = '10px'; // Position near the bottom
+      Img.style.right = '10px';  // Position near the right
 
       // Append the pre-given image to the preview
-      preview.appendChild(preGivenImg);
+      preview.appendChild(Img);
     };
 
     document.getElementById('downloadButton').style.display = 'block';
