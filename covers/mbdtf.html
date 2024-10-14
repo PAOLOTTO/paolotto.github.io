@@ -242,7 +242,7 @@
     square.style.transform = 'translate(-50%, -50%)'; // Center the square
     preview.appendChild(square);
 
-    // Add the image (if selected) with pixelation effect
+    // Add the pixelated image (if selected)
     const image1 = document.getElementById('image1').files[0];
     if (image1) {
       const img1 = new Image();
@@ -271,7 +271,7 @@
         // Draw the scaled image back onto the main canvas (this will pixelate it)
         ctx.imageSmoothingEnabled = false; // Disable smoothing for pixelated effect
 
-        // Define the final size for the pixelated image (a little smaller than the square, e.g., 40% of the square)
+        // Define the final size for the pixelated image (slightly smaller than the square)
         const finalWidth = squareSize * 0.9; // 90% of square size
         const finalHeight = squareSize * 0.9;
 
@@ -280,10 +280,25 @@
         const offsetY = (squareSize - finalHeight) / 2;
         ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, offsetX, offsetY, finalWidth, finalHeight);
 
-        // Append the canvas to the square div (so it's inside the square and not replacing it)
+        // Append the canvas to the square div (so it's inside the square)
         square.appendChild(canvas);
       };
     }
+
+    // Add the pre-given image in the bottom-right corner
+    const preGivenImg = new Image();
+    preGivenImg.src = './assets/pa.png'; // Update with the actual image path or URL
+    preGivenImg.onload = function() {
+      const size = 100; // Set size for the pre-given image (adjust as needed)
+      preGivenImg.style.width = size + 'px';
+      preGivenImg.style.height = size + 'px';
+      preGivenImg.style.position = 'absolute';
+      preGivenImg.style.bottom = '10px'; // Position near the bottom
+      preGivenImg.style.right = '10px';  // Position near the right
+
+      // Append the pre-given image to the preview
+      preview.appendChild(preGivenImg);
+    };
 
     document.getElementById('downloadButton').style.display = 'block';
 }
