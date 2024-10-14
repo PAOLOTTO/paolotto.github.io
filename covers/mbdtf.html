@@ -225,88 +225,79 @@
 
     const preview = document.getElementById('preview');
     preview.style.backgroundColor = bgColor;
-    preview.innerHTML = ''; // Clear previous content only once, at the start
-
-    // Add the square
-    const square = document.createElement('div');
-    square.style.width = '45%';
-    square.style.height = '45%';
-    square.style.backgroundColor = borderColor;
-    square.style.position = 'absolute';
-    square.style.top = '50%';
-    square.style.left = '50%';
-    square.style.transform = 'translate(-50%, -50%)'; // Center the square
-    preview.appendChild(square);
-
-    // Load a predefined image
-    const predefinedImageSrc = 'https://raw.githubusercontent.com/PAOLOTTO/paolotto.github.io/refs/heads/main/assets/pa.png'; // Replace with the URL of your predefined image
-    const predefinedImg = new Image();
-    predefinedImg.src = predefinedImageSrc;
+    preview.innerHTML = ''; // Clear previous content
 
     // Create a canvas to draw everything
+    const canvasSize = 500; // 500px
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-
-    // Set canvas size to be the same as the preview area
-    const canvasSize = 500; // 500px
     canvas.width = canvasSize;
     canvas.height = canvasSize;
 
-    // When the predefined image is loaded
-    predefinedImg.onload = function () {
-        // Draw the square
-        ctx.fillStyle = borderColor;
-        ctx.fillRect(canvasSize * 0.275, canvasSize * 0.275, canvasSize * 0.45, canvasSize * 0.45); // Center the square
+    // Draw the background (square border)
+    ctx.fillStyle = borderColor;
+    ctx.fillRect(canvasSize * 0.275, canvasSize * 0.275, canvasSize * 0.45, canvasSize * 0.45); // Center the square
 
-        // Add the pixelated image (if selected)
-        const image1 = document.getElementById('image1').files[0];
-        if (image1) {
-            const img1 = new Image();
-            img1.src = URL.createObjectURL(image1);
+    // Load the pixelated image if selected
+    const image1 = document.getElementById('image1').files[0];
+    if (image1) {
+        const img1 = new Image();
+        img1.src = URL.createObjectURL(image1);
 
-            img1.onload = function () {
-                // Calculate scaled size based on pixelation rate
-                const scaledWidth = Math.floor(canvasSize / pixelationRate);
-                const scaledHeight = Math.floor(canvasSize / pixelationRate);
+        img1.onload = function () {
+            // Calculate scaled size based on pixelation rate
+            const scaledWidth = Math.floor(canvasSize * 0.45 / pixelationRate);
+            const scaledHeight = Math.floor(canvasSize * 0.45 / pixelationRate);
 
-                // Draw the image on a smaller canvas for pixelation
-                const tempCanvas = document.createElement('canvas');
-                const tempCtx = tempCanvas.getContext('2d');
-                tempCanvas.width = scaledWidth;
-                tempCanvas.height = scaledHeight;
-                tempCtx.drawImage(img1, 0, 0, scaledWidth, scaledHeight);
+            // Create a temporary canvas to apply pixelation
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = scaledWidth;
+            tempCanvas.height = scaledHeight;
+            tempCtx.drawImage(img1, 0, 0, scaledWidth, scaledHeight);
 
-                // Disable smoothing for pixelated effect
-                ctx.imageSmoothingEnabled = false;
+            // Disable image smoothing for a pixelated effect
+            ctx.imageSmoothingEnabled = false;
 
-                // Define the final size for the pixelated image (slightly smaller than the square)
-                const finalWidth = (canvasSize * 0.45) * 0.9; // 90% of square size
-                const finalHeight = (canvasSize * 0.45) * 0.9;
+            // Define the final size for the pixelated image (slightly smaller than the square)
+            const finalWidth = canvasSize * 0.45 * 0.9; // 90% of the square size
+            const finalHeight = canvasSize * 0.45 * 0.9;
 
-                // Center the pixelated image within the square
-                const offsetX = (canvasSize * 0.45 - finalWidth) / 2 + (canvasSize * 0.275); // Center horizontally
-                const offsetY = (canvasSize * 0.45 - finalHeight) / 2 + (canvasSize * 0.275); // Center vertically
-                ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, offsetX, offsetY, finalWidth, finalHeight);
+            // Center the pixelated image within the square
+            const offsetX = (canvasSize * 0.45 - finalWidth) / 2 + (canvasSize * 0.275);
+            const offsetY = (canvasSize * 0.45 - finalHeight) / 2 + (canvasSize * 0.275);
 
-                // Now draw the predefined image in the bottom right corner
-                const imgWidth = canvasSize * 0.15; // Width of the predefined image
-                const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
-                ctx.drawImage(predefinedImg, canvasSize - imgWidth, canvasSize - imgHeight, imgWidth, imgHeight);
+            // Draw the pixelated image on the main canvas
+            ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, offsetX, offsetY, finalWidth, finalHeight);
 
-                // Append the canvas to the preview div
-                preview.appendChild(canvas);
-            };
-        } else {
-            // If no pixelated image is selected, just draw the predefined image
-            const imgWidth = canvasSize * 0.15; // Width of the predefined image
-            const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
-            ctx.drawImage(predefinedImg, (canvasSize - (canvasSize * 0.05)) - imgWidth, (canvasSize - (canvasSize * 0.05)) - imgHeight, imgWidth, imgHeight);
+            // Once pixelated image is drawn, draw the predefined image
+            drawPredefinedImage(ctx, canvasSize);
 
-            // Append the canvas to the preview div
+            // Append the canvas to the preview section
             preview.appendChild(canvas);
-        }
 
+            document.getElementById('downloadButton').style.display = 'block';
+        };
+    } else {
+        // If no pixelated image, just draw the predefined image
+        drawPredefinedImage(ctx, canvasSize);
+        preview.appendChild(canvas);
         document.getElementById('downloadButton').style.display = 'block';
+    }
+}
+
+// Function to draw the predefined image in the bottom right corner
+function drawPredefinedImage(ctx, canvasSize) {
+    const predefinedImageSrc = 'https://raw.githubusercontent.com/PAOLOTTO/paolotto.github.io/refs/heads/main/assets/pa.png'; // Replace with your predefined image URL
+    const predefinedImg = new Image();
+    predefinedImg.src = predefinedImageSrc;
+
+    predefinedImg.onload = function () {
+        const imgWidth = canvasSize * 0.15; // Adjust the size of the predefined image
+        const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
+
+        // Draw the predefined image in the bottom right corner
+        ctx.drawImage(predefinedImg, canvasSize - imgWidth, canvasSize - imgHeight, imgWidth, imgHeight);
     };
 }
 
