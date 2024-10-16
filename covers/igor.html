@@ -249,9 +249,11 @@
       textElement.style.fontWeight = item.fontWeight;
       textElement.style.position = 'absolute';
       textElement.style.color = color;
-      textElement.style.transform = item.transform;  // Add this line to apply centering
+      textElement.style.transform = item.transform;
+      textElement.style.whiteSpace = 'nowrap';  // Prevents text from breaking into multiple lines
       preview.appendChild(textElement);
     });
+
 
     // Add the images
   const image1 = document.getElementById('image1').files[0];
