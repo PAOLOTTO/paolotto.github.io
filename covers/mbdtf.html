@@ -320,12 +320,11 @@ function drawPredefinedImage(ctx, canvasSize) {
     const canvas = document.querySelector('#preview canvas');  // Get the generated canvas inside the preview
 
     if (canvas) {
-        canvas.toBlob(function (blob) {
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);  // Create a blob URL for the canvas content
-            link.download = 'mbdtf.png';  // Specify the filename for the download
-            link.click();  // Trigger the download
-        }, 'image/png');  // Specify the image format (PNG)
+        const dataURL = canvas.toDataURL('image/png');  // Convert the canvas to a base64 image
+        const link = document.createElement('a');
+        link.href = dataURL;  // Use the dataURL as the href
+        link.download = 'mbdtf.png';  // Specify the filename
+        link.click();  // Trigger the download
     } else {
         alert('Please generate the image first.');
     }
