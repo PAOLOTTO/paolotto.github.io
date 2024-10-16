@@ -235,10 +235,9 @@
     preview.style.backgroundColor = bgColor;
     preview.innerHTML = '';
 
-
     const textElements = [
-      { text: text1, top: '87%', left: '12%', fontSize: '14px', fontWeight: '400' },
-      { text: text2, top: '90%', left: '40%', fontSize: '14px', fontWeight: '400' }
+      { text: text1, top: '87%', left: '50%', transform: 'translateX(-50%)', fontSize: '14px', fontWeight: '400' },
+      { text: text2, top: '90%', left: '50%', transform: 'translateX(-50%)', fontSize: '14px', fontWeight: '400' }
     ];
 
     textElements.forEach(item => {
@@ -250,6 +249,7 @@
       textElement.style.fontWeight = item.fontWeight;
       textElement.style.position = 'absolute';
       textElement.style.color = color;
+      textElement.style.transform = item.transform;  // Add this line to apply centering
       preview.appendChild(textElement);
     });
 
