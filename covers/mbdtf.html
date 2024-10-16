@@ -232,9 +232,13 @@
     canvas.width = canvasSize;
     canvas.height = canvasSize;
 
-    // Draw the background border square
+    // Draw the full background (fill entire canvas)
+    ctx.fillStyle = bgColor;  // Use the selected background color
+    ctx.fillRect(0, 0, canvasSize, canvasSize);  // Fill the entire canvas with the background color
+
+    // Draw the border square in the center
     ctx.fillStyle = borderColor;
-    ctx.fillRect(canvasSize * 0.275, canvasSize * 0.275, canvasSize * 0.45, canvasSize * 0.45);
+    ctx.fillRect(canvasSize * 0.275, canvasSize * 0.275, canvasSize * 0.45, canvasSize * 0.45);  // Centered square
 
     const image1 = document.getElementById('image1').files[0];
     if (image1) {
@@ -262,7 +266,8 @@
 
             drawPredefinedImage(ctx, canvasSize);
             preview.appendChild(canvas);
-            document.getElementById('downloadButton').style.display = 'block';  // Show the download button after generation
+
+            document.getElementById('downloadButton').style.display = 'block';  // Show the download button
         };
     } else {
         drawPredefinedImage(ctx, canvasSize);
