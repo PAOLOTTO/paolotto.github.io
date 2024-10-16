@@ -224,65 +224,50 @@
     const pixelationRate = document.getElementById('pixelation').value;
 
     const preview = document.getElementById('preview');
-    preview.style.backgroundColor = bgColor;
     preview.innerHTML = ''; // Clear previous content
 
-    // Create a canvas to draw everything
-    const canvasSize = 500; // 500px
+    const canvasSize = 500;
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = canvasSize;
     canvas.height = canvasSize;
 
-    // Draw the background (square border)
+    // Draw the background border square
     ctx.fillStyle = borderColor;
-    ctx.fillRect(canvasSize * 0.275, canvasSize * 0.275, canvasSize * 0.45, canvasSize * 0.45); // Center the square
+    ctx.fillRect(canvasSize * 0.275, canvasSize * 0.275, canvasSize * 0.45, canvasSize * 0.45);
 
-    // Load the pixelated image if selected
     const image1 = document.getElementById('image1').files[0];
     if (image1) {
         const img1 = new Image();
         img1.src = URL.createObjectURL(image1);
 
         img1.onload = function () {
-            // Calculate scaled size based on pixelation rate
             const scaledWidth = Math.floor(canvasSize * 0.45 / pixelationRate);
             const scaledHeight = Math.floor(canvasSize * 0.45 / pixelationRate);
 
-            // Create a temporary canvas to apply pixelation
             const tempCanvas = document.createElement('canvas');
             const tempCtx = tempCanvas.getContext('2d');
             tempCanvas.width = scaledWidth;
             tempCanvas.height = scaledHeight;
             tempCtx.drawImage(img1, 0, 0, scaledWidth, scaledHeight);
 
-            // Disable image smoothing for a pixelated effect
             ctx.imageSmoothingEnabled = false;
 
-            // Define the final size for the pixelated image (slightly smaller than the square)
-            const finalWidth = canvasSize * 0.45 * 0.9; // 90% of the square size
+            const finalWidth = canvasSize * 0.45 * 0.9;
             const finalHeight = canvasSize * 0.45 * 0.9;
-
-            // Center the pixelated image within the square
             const offsetX = (canvasSize * 0.45 - finalWidth) / 2 + (canvasSize * 0.275);
             const offsetY = (canvasSize * 0.45 - finalHeight) / 2 + (canvasSize * 0.275);
 
-            // Draw the pixelated image on the main canvas
             ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, offsetX, offsetY, finalWidth, finalHeight);
 
-            // Once pixelated image is drawn, draw the predefined image
             drawPredefinedImage(ctx, canvasSize);
-
-            // Append the canvas to the preview section
             preview.appendChild(canvas);
-
-            document.getElementById('downloadButton').style.display = 'block';
+            document.getElementById('downloadButton').style.display = 'block';  // Show the download button after generation
         };
     } else {
-        // If no pixelated image, just draw the predefined image
         drawPredefinedImage(ctx, canvasSize);
         preview.appendChild(canvas);
-        document.getElementById('downloadButton').style.display = 'block';
+        document.getElementById('downloadButton').style.display = 'block';  // Show the download button
     }
 }
 
@@ -310,10 +295,9 @@ function drawPredefinedImage(ctx, canvasSize) {
   }
 
   function downloadImage() {
-    const canvas = document.querySelector('#preview canvas');  // Get the generated canvas inside #preview
+    const canvas = document.querySelector('#preview canvas');  // Get the generated canvas inside the preview
 
     if (canvas) {
-        // Create an <a> element and simulate a click to trigger the download
         const link = document.createElement('a');
         link.href = canvas.toDataURL('image/png');  // Get the canvas content as a PNG
         link.download = 'mbdtf.png';  // Specify the filename
