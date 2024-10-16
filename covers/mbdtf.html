@@ -224,64 +224,72 @@
     const pixelationRate = document.getElementById('pixelation').value;
 
     const preview = document.getElementById('preview');
+    preview.style.backgroundColor = bgColor;
     preview.innerHTML = ''; // Clear previous content
 
-    const canvasSize = 500;
+    // Create a canvas to draw everything
+    const canvasSize = 500; // 500px
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     canvas.width = canvasSize;
     canvas.height = canvasSize;
 
-    // Draw the full background (fill entire canvas)
-    ctx.fillStyle = bgColor;  // Use the selected background color
-    ctx.fillRect(0, 0, canvasSize, canvasSize);  // Fill the entire canvas with the background color
-
-    // Draw the border square in the center
+    // Draw the background (square border)
     ctx.fillStyle = borderColor;
-    ctx.fillRect(canvasSize * 0.275, canvasSize * 0.275, canvasSize * 0.45, canvasSize * 0.45);  // Centered square
+    ctx.fillRect(canvasSize * 0.275, canvasSize * 0.275, canvasSize * 0.45, canvasSize * 0.45); // Center the square
 
+    // Load the pixelated image if selected
     const image1 = document.getElementById('image1').files[0];
     if (image1) {
         const img1 = new Image();
-        img1.crossOrigin = "anonymous";  // Handle CORS for user-uploaded images
         img1.src = URL.createObjectURL(image1);
 
         img1.onload = function () {
+            // Calculate scaled size based on pixelation rate
             const scaledWidth = Math.floor(canvasSize * 0.45 / pixelationRate);
             const scaledHeight = Math.floor(canvasSize * 0.45 / pixelationRate);
 
+            // Create a temporary canvas to apply pixelation
             const tempCanvas = document.createElement('canvas');
             const tempCtx = tempCanvas.getContext('2d');
             tempCanvas.width = scaledWidth;
             tempCanvas.height = scaledHeight;
             tempCtx.drawImage(img1, 0, 0, scaledWidth, scaledHeight);
 
+            // Disable image smoothing for a pixelated effect
             ctx.imageSmoothingEnabled = false;
 
-            const finalWidth = canvasSize * 0.45 * 0.9;
+            // Define the final size for the pixelated image (slightly smaller than the square)
+            const finalWidth = canvasSize * 0.45 * 0.9; // 90% of the square size
             const finalHeight = canvasSize * 0.45 * 0.9;
+
+            // Center the pixelated image within the square
             const offsetX = (canvasSize * 0.45 - finalWidth) / 2 + (canvasSize * 0.275);
             const offsetY = (canvasSize * 0.45 - finalHeight) / 2 + (canvasSize * 0.275);
 
+            // Draw the pixelated image on the main canvas
             ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, offsetX, offsetY, finalWidth, finalHeight);
 
+            // Once pixelated image is drawn, draw the predefined image
             drawPredefinedImage(ctx, canvasSize);
+
+            // Append the canvas to the preview section
             preview.appendChild(canvas);
 
-            document.getElementById('downloadButton').style.display = 'block';  // Show the download button
+            document.getElementById('downloadButton').style.display = 'block';
         };
     } else {
+        // If no pixelated image, just draw the predefined image
         drawPredefinedImage(ctx, canvasSize);
         preview.appendChild(canvas);
-        document.getElementById('downloadButton').style.display = 'block';  // Show the download button
+        document.getElementById('downloadButton').style.display = 'block';
     }
 }
 
 // Function to draw the predefined image in the bottom right corner
 function drawPredefinedImage(ctx, canvasSize) {
-    const predefinedImageSrc = './assets/pa.svg'; // Replace with your predefined image URL
+    const predefinedImageSrc = '/assets/pa.svg'; // Replace with your predefined image URL
     const predefinedImg = new Image();
-    predefinedImg.crossOrigin = "anonymous";  // Handle CORS for predefined image
     predefinedImg.src = predefinedImageSrc;
 
     predefinedImg.onload = function () {
@@ -290,60 +298,6 @@ function drawPredefinedImage(ctx, canvasSize) {
 
         // Draw the predefined image in the bottom right corner
         ctx.drawImage(predefinedImg, canvasSize - imgWidth - (canvasSize * 0.05), canvasSize - imgHeight - (canvasSize * 0.05), imgWidth, imgHeight);
-    };
-
-    predefinedImg.onerror = function() {
-        alert("There was an issue loading external resources due to cross-origin restrictions.");
-    }
-}
-
-// Updated downloadImage function
-function downloadImage() {
-    const canvas = document.querySelector('#preview canvas');  // Get the generated canvas inside the preview
-
-    if (canvas) {
-        try {
-            const dataURL = canvas.toDataURL('image/png');  // Convert the canvas to a base64 image
-            const link = document.createElement('a');
-            link.href = dataURL;  // Use the dataURL as the href
-            link.download = 'mbdtf.png';  // Specify the filename
-            link.click();  // Trigger the download
-        } catch (error) {
-            alert("Unable to download image due to cross-origin restrictions.");
-        }
-    } else {
-        alert('Please generate the image first.');
-    }
-}
-
-// Function to draw the predefined image in the bottom right corner
-function drawPredefinedImage(ctx, canvasSize) {
-    const predefinedImageSrc = 'https://raw.githubusercontent.com/PAOLOTTO/paolotto.github.io/refs/heads/main/assets/pa.svg'; // Replace with your predefined image URL
-    const predefinedImg = new Image();
-    predefinedImg.crossOrigin = "anonymous";  // Handle CORS for predefined image
-    predefinedImg.src = predefinedImageSrc;
-
-    predefinedImg.onload = function () {
-        const imgWidth = canvasSize * 0.15; // Adjust the size of the predefined image
-        const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
-
-        // Draw the predefined image in the bottom right corner
-        ctx.drawImage(predefinedImg, canvasSize - imgWidth - (canvasSize * 0.05), canvasSize - imgHeight - (canvasSize * 0.05), imgWidth, imgHeight);
-    };
-}
-
-// Function to draw the predefined image in the bottom right corner
-function drawPredefinedImage(ctx, canvasSize) {
-    const predefinedImageSrc = 'https://raw.githubusercontent.com/PAOLOTTO/paolotto.github.io/refs/heads/main/assets/pa.svg'; // Replace with your predefined image URL
-    const predefinedImg = new Image();
-    predefinedImg.src = predefinedImageSrc;
-
-    predefinedImg.onload = function () {
-        const imgWidth = canvasSize * 0.15; // Adjust the size of the predefined image
-        const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
-
-        // Draw the predefined image in the bottom right corner
-        ctx.drawImage(predefinedImg, canvasSize - imgWidth - (canvasSize * 0.04), canvasSize - imgHeight - (canvasSize * 0.04), imgWidth, imgHeight);
     };
 }
 
@@ -356,18 +310,13 @@ function drawPredefinedImage(ctx, canvasSize) {
   }
 
   function downloadImage() {
-    const canvas = document.querySelector('#preview canvas');  // Get the generated canvas inside the preview
-
-    if (canvas) {
-        const dataURL = canvas.toDataURL('image/png');  // Convert the canvas to a base64 image
-        const link = document.createElement('a');
-        link.href = dataURL;  // Use the dataURL as the href
-        link.download = 'mbdtf.png';  // Specify the filename
-        link.click();  // Trigger the download
-    } else {
-        alert('Please generate the image first.');
-    }
-}
+    html2canvas(document.getElementById('preview')).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'mbdtf.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  }
 
   document.getElementById('bgColor').addEventListener('input', colorSet);
   document.getElementById('color').addEventListener('input', colorSet);
