@@ -288,7 +288,7 @@
 
 // Function to draw the predefined image in the bottom right corner
 function drawPredefinedImage(ctx, canvasSize) {
-    const predefinedImageSrc = 'https://raw.githubusercontent.com/PAOLOTTO/paolotto.github.io/refs/heads/main/assets/pa.png'; // Replace with your predefined image URL
+    const predefinedImageSrc = 'https://raw.githubusercontent.com/PAOLOTTO/paolotto.github.io/refs/heads/main/assets/pa.svg'; // Replace with your predefined image URL
     const predefinedImg = new Image();
     predefinedImg.src = predefinedImageSrc;
 
@@ -297,7 +297,7 @@ function drawPredefinedImage(ctx, canvasSize) {
         const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
 
         // Draw the predefined image in the bottom right corner
-        ctx.drawImage(predefinedImg, canvasSize - imgWidth - (canvasSize * 0.05), canvasSize - imgHeight - (canvasSize * 0.05));
+        ctx.drawImage(predefinedImg, canvasSize - imgWidth - (canvasSize * 0.05), canvasSize - imgHeight - (canvasSize * 0.05), imgWidth, imgHeight);
     };
 }
 
