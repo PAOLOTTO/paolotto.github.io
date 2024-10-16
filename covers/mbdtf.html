@@ -243,6 +243,7 @@
     const image1 = document.getElementById('image1').files[0];
     if (image1) {
         const img1 = new Image();
+        img1.crossOrigin = "anonymous";  // Handle CORS for user-uploaded images
         img1.src = URL.createObjectURL(image1);
 
         img1.onload = function () {
@@ -274,6 +275,22 @@
         preview.appendChild(canvas);
         document.getElementById('downloadButton').style.display = 'block';  // Show the download button
     }
+}
+
+// Function to draw the predefined image in the bottom right corner
+function drawPredefinedImage(ctx, canvasSize) {
+    const predefinedImageSrc = 'https://raw.githubusercontent.com/PAOLOTTO/paolotto.github.io/refs/heads/main/assets/pa.svg'; // Replace with your predefined image URL
+    const predefinedImg = new Image();
+    predefinedImg.crossOrigin = "anonymous";  // Handle CORS for predefined image
+    predefinedImg.src = predefinedImageSrc;
+
+    predefinedImg.onload = function () {
+        const imgWidth = canvasSize * 0.15; // Adjust the size of the predefined image
+        const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
+
+        // Draw the predefined image in the bottom right corner
+        ctx.drawImage(predefinedImg, canvasSize - imgWidth - (canvasSize * 0.05), canvasSize - imgHeight - (canvasSize * 0.05), imgWidth, imgHeight);
+    };
 }
 
 // Function to draw the predefined image in the bottom right corner
