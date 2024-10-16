@@ -224,7 +224,6 @@
     const pixelationRate = document.getElementById('pixelation').value;
 
     const preview = document.getElementById('preview');
-    preview.style.backgroundColor = bgColor;
     preview.innerHTML = ''; // Clear previous content
 
     // Create a canvas to draw everything
@@ -310,12 +309,14 @@ function drawPredefinedImage(ctx, canvasSize) {
   }
 
   function downloadImage() {
-    const canvas = document.querySelector('#preview canvas'); // Get the canvas element from the preview
+    const canvas = document.querySelector('#preview canvas'); // Get the canvas element
     if (canvas) {
         const link = document.createElement('a');
-        link.download = 'mbdtf.png';
-        link.href = canvas.toDataURL(); // Convert the canvas to a data URL
-        link.click(); // Programmatically trigger a click to start download
+        link.download = 'mbdtf.png'; // Name of the downloaded file
+        link.href = canvas.toDataURL('image/png'); // Convert canvas content to a data URL
+        link.click(); // Trigger a click to start the download
+    } else {
+        console.log("Canvas not found! Make sure to generate the image first.");
     }
 }
 
