@@ -310,13 +310,18 @@ function drawPredefinedImage(ctx, canvasSize) {
   }
 
   function downloadImage() {
-    html2canvas(document.getElementById('preview')).then(canvas => {
-      const link = document.createElement('a');
-      link.download = 'mbdtf.png';
-      link.href = canvas.toDataURL();
-      link.click();
-    });
-  }
+    const canvas = document.querySelector('#preview canvas');  // Get the generated canvas inside #preview
+
+    if (canvas) {
+        // Create an <a> element and simulate a click to trigger the download
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');  // Get the canvas content as a PNG
+        link.download = 'mbdtf.png';  // Specify the filename
+        link.click();  // Trigger the download
+    } else {
+        alert('Please generate the image first.');
+    }
+}
 
   document.getElementById('bgColor').addEventListener('input', colorSet);
   document.getElementById('color').addEventListener('input', colorSet);
