@@ -291,6 +291,45 @@ function drawPredefinedImage(ctx, canvasSize) {
         // Draw the predefined image in the bottom right corner
         ctx.drawImage(predefinedImg, canvasSize - imgWidth - (canvasSize * 0.05), canvasSize - imgHeight - (canvasSize * 0.05), imgWidth, imgHeight);
     };
+
+    predefinedImg.onerror = function() {
+        alert("There was an issue loading external resources due to cross-origin restrictions.");
+    }
+}
+
+// Updated downloadImage function
+function downloadImage() {
+    const canvas = document.querySelector('#preview canvas');  // Get the generated canvas inside the preview
+
+    if (canvas) {
+        try {
+            const dataURL = canvas.toDataURL('image/png');  // Convert the canvas to a base64 image
+            const link = document.createElement('a');
+            link.href = dataURL;  // Use the dataURL as the href
+            link.download = 'mbdtf.png';  // Specify the filename
+            link.click();  // Trigger the download
+        } catch (error) {
+            alert("Unable to download image due to cross-origin restrictions.");
+        }
+    } else {
+        alert('Please generate the image first.');
+    }
+}
+
+// Function to draw the predefined image in the bottom right corner
+function drawPredefinedImage(ctx, canvasSize) {
+    const predefinedImageSrc = 'https://raw.githubusercontent.com/PAOLOTTO/paolotto.github.io/refs/heads/main/assets/pa.svg'; // Replace with your predefined image URL
+    const predefinedImg = new Image();
+    predefinedImg.crossOrigin = "anonymous";  // Handle CORS for predefined image
+    predefinedImg.src = predefinedImageSrc;
+
+    predefinedImg.onload = function () {
+        const imgWidth = canvasSize * 0.15; // Adjust the size of the predefined image
+        const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
+
+        // Draw the predefined image in the bottom right corner
+        ctx.drawImage(predefinedImg, canvasSize - imgWidth - (canvasSize * 0.05), canvasSize - imgHeight - (canvasSize * 0.05), imgWidth, imgHeight);
+    };
 }
 
 // Function to draw the predefined image in the bottom right corner
