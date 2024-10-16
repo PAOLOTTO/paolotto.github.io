@@ -224,6 +224,7 @@
     const pixelationRate = document.getElementById('pixelation').value;
 
     const preview = document.getElementById('preview');
+    preview.style.backgroundColor = bgColor;
     preview.innerHTML = ''; // Clear previous content
 
     // Create a canvas to draw everything
@@ -296,7 +297,7 @@ function drawPredefinedImage(ctx, canvasSize) {
         const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
 
         // Draw the predefined image in the bottom right corner
-        ctx.drawImage(predefinedImg, canvasSize - imgWidth - (canvasSize * 0.05), canvasSize - imgHeight - (canvasSize * 0.05), imgWidth, imgHeight);
+        ctx.drawImage(predefinedImg, canvasSize - imgWidth, canvasSize - imgHeight, imgWidth, imgHeight);
     };
 }
 
@@ -309,16 +310,13 @@ function drawPredefinedImage(ctx, canvasSize) {
   }
 
   function downloadImage() {
-    const canvas = document.querySelector('#preview canvas'); // Get the canvas element
-    if (canvas) {
-        const link = document.createElement('a');
-        link.download = 'mbdtf.png'; // Name of the downloaded file
-        link.href = canvas.toDataURL('image/png'); // Convert canvas content to a data URL
-        link.click(); // Trigger a click to start the download
-    } else {
-        console.log("Canvas not found! Make sure to generate the image first.");
-    }
-}
+    html2canvas(document.getElementById('preview')).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'mbdtf.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  }
 
   document.getElementById('bgColor').addEventListener('input', colorSet);
   document.getElementById('color').addEventListener('input', colorSet);
