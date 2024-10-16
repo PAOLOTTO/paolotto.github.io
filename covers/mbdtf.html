@@ -297,7 +297,7 @@ function drawPredefinedImage(ctx, canvasSize) {
         const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
 
         // Draw the predefined image in the bottom right corner
-        ctx.drawImage(predefinedImg, canvasSize - imgWidth, canvasSize - imgHeight, imgWidth, imgHeight);
+        ctx.drawImage(predefinedImg, canvasSize - imgWidth - (canvasSize * 0.05), canvasSize - imgHeight - (canvasSize * 0.05));
     };
 }
 
