@@ -285,29 +285,13 @@
   }
 
   function downloadImage() {
-    const preview = document.getElementById('preview');
-
-    // Update the size of the preview container to match the canvas size
-    preview.style.width = '2000px';
-    preview.style.height = '2000px';
-
-    html2canvas(preview, {
-        width: 2000,   // Set canvas width
-        height: 2000,  // Set canvas height
-        scale: 1       // Prevent scaling
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'igor.png';
-        link.href = canvas.toDataURL();
-        link.click();
-
-        // Reset preview size to avoid affecting the layout
-        preview.style.width = '500px';
-        preview.style.height = '500px';
+    html2canvas(document.getElementById('preview')).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'igor.png';
+      link.href = canvas.toDataURL();
+      link.click();
     });
-}
-
-
+  }
 
   document.getElementById('bgColor').addEventListener('input', colorSet);
   document.getElementById('color').addEventListener('input', colorSet);
