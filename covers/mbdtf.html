@@ -310,7 +310,7 @@ function drawPredefinedImage(ctx, canvasSize) {
   }
 
   function downloadImage() {
-    html2canvas(document.getElementById('preview')).then(canvas => {
+    html2canvas(document.getElementById('preview'), {width: 2000, height: 2000, scale: 1}).then(canvas => {
       const link = document.createElement('a');
       link.download = 'mbdtf.png';
       link.href = canvas.toDataURL();
