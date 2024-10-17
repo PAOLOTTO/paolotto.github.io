@@ -325,16 +325,13 @@
   }
 
   function downloadImage() {
-  const preview = document.getElementById('preview');
-  
-  html2canvas(preview, {width: 2000, height: 2000, scale: 1}).then(canvas => {
-    const link = document.createElement('a');
-    link.download = 'thelifeof.png';
-    link.href = canvas.toDataURL();
-    link.click();
-  });
-}
-
+    html2canvas(document.getElementById('preview')).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'thelifeof.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  }
 
   document.getElementById('bgColor').addEventListener('input', colorSet);
   document.getElementById('color').addEventListener('input', colorSet);
