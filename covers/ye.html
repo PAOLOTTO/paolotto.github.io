@@ -205,17 +205,6 @@
   preview.style.backgroundColor = '#000';
   preview.innerHTML = '';
 
-  // Directly add the SVG as an image
-  const svgImage = document.createElement('img');
-  svgImage.src = '/assets/ihate.svg'; // Path to the SVG file
-  svgImage.style.width = '50%';
-  svgImage.style.height = '50%';
-  svgImage.style.position = 'absolute';
-  svgImage.style.top = '50%';
-  svgImage.style.left = '50%';
-  svgImage.crossOrigin = 'anonymous'; // Ensure cross-origin is handled
-  preview.appendChild(svgImage);
-
   // Add the uploaded image
   const image1 = document.getElementById('image1').files[0];
   if (image1) {
@@ -231,6 +220,16 @@
     };
   }
 
+    // Directly add the SVG as an image
+  const svgImage = document.createElement('img');
+  svgImage.src = '/assets/ihate.svg'; // Path to the SVG file
+  svgImage.style.width = '50%';
+  svgImage.style.height = '50%';
+  svgImage.style.position = 'absolute';
+  svgImage.style.top = '50%';
+  svgImage.style.left = '50%';
+  svgImage.crossOrigin = 'anonymous'; // Ensure cross-origin is handled
+  preview.appendChild(svgImage);
   document.getElementById('downloadButton').style.display = 'block';
 }
 
