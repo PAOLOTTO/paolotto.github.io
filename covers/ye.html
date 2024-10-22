@@ -209,7 +209,7 @@
     const img1 = document.createElement('img');
     img1.src = URL.createObjectURL(image1);
     img1.onload = function() {
-      img1.style.width = '100%'; 
+      img1.style.width = '100%';
       img1.style.position = 'absolute';
       img1.style.top = '50%';  // 50% from the top of the container
       img1.style.left = '50%'; // Center horizontally
@@ -218,20 +218,22 @@
     };
   }
 
-    // Directly add the SVG as an image
-  const svgImage = document.createElement('img');
-svgImage.src = '/assets/ihate.svg'; // Path to the SVG file
-svgImage.style.width = '50%';
-svgImage.style.height = '50%';
-svgImage.style.position = 'absolute';
-svgImage.style.top = '50%';
-svgImage.style.left = '50%';
-svgImage.style.transform = 'translate(-50%, -50%)';
-svgImage.style.zIndex = 2;  // Make sure the SVG is on top
-svgImage.classList.add('svg-image');
-svgImage.crossOrigin = 'anonymous'; // Ensure cross-origin is handled
-preview.appendChild(svgImage);
-    
+  // Convert the external SVG to Base64 and embed it
+  fetch('/assets/ihate.svg')
+    .then(response => response.text())
+    .then(svgText => {
+      const svgBase64 = 'data:image/svg+xml;base64,' + btoa(svgText);
+      const svgImage = document.createElement('img');
+      svgImage.src = svgBase64;
+      svgImage.style.width = '50%';
+      svgImage.style.height = '50%';
+      svgImage.style.position = 'absolute';
+      svgImage.style.top = '50%';
+      svgImage.style.left = '50%';
+      svgImage.style.transform = 'translate(-50%, -50%)';
+      preview.appendChild(svgImage);
+    });
+
   document.getElementById('downloadButton').style.display = 'block';
 }
 
