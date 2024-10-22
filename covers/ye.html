@@ -149,14 +149,12 @@
     
     #preview img {
       position: absolute;
+      z-index: 1; /* Lower z-index for the background image */
     }
-    
-    #preview p {
+
+    #preview .svg-image {
       position: absolute;
-      font-family: "Courier Prime", monospace;
-      font-weight: 400;
-      font-style: normal;
-      color: black;
+      z-index: 2; /* Higher z-index for the SVG */
     }
     
     #color {
@@ -222,14 +220,18 @@
 
     // Directly add the SVG as an image
   const svgImage = document.createElement('img');
-  svgImage.src = '/assets/ihate.svg'; // Path to the SVG file
-  svgImage.style.width = '50%';
-  svgImage.style.height = '50%';
-  svgImage.style.position = 'absolute';
-  svgImage.style.top = '50%';
-  svgImage.style.left = '50%';
-  svgImage.crossOrigin = 'anonymous'; // Ensure cross-origin is handled
-  preview.appendChild(svgImage);
+svgImage.src = '/assets/ihate.svg'; // Path to the SVG file
+svgImage.style.width = '50%';
+svgImage.style.height = '50%';
+svgImage.style.position = 'absolute';
+svgImage.style.top = '50%';
+svgImage.style.left = '50%';
+svgImage.style.transform = 'translate(-50%, -50%)';
+svgImage.style.zIndex = 2;  // Make sure the SVG is on top
+svgImage.classList.add('svg-image');
+svgImage.crossOrigin = 'anonymous'; // Ensure cross-origin is handled
+preview.appendChild(svgImage);
+    
   document.getElementById('downloadButton').style.display = 'block';
 }
 
