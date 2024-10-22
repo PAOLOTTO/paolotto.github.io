@@ -198,9 +198,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script>
-  function generateImage() {
-    const textColor = document.getElementById('color').value;
-
+function generateImage() {
     const preview = document.getElementById('preview');
     preview.style.backgroundColor = '#000';
     preview.innerHTML = ''; // Clear previous content
@@ -212,25 +210,41 @@
     canvas.width = canvasSize;
     canvas.height = canvasSize;
 
-    // Load the pixelated image if selected
+    // Load the selected image if available
     const image1 = document.getElementById('image1').files[0];
     if (image1) {
         const img1 = new Image();
         img1.src = URL.createObjectURL(image1);
 
         img1.onload = function () {
-            ctx.drawImage(img1, 0, 0, scaledWidth, scaledHeight, offsetX, offsetY, canvasSize, canvasSize);
+            let scaledWidth, scaledHeight, offsetX, offsetY;
+            const imgAspectRatio = img1.width / img1.height;
+            const canvasAspectRatio = canvasSize / canvasSize;
 
-            // Once image is drawn, draw the predefined image
+            if (imgAspectRatio > canvasAspectRatio) {
+                scaledWidth = canvasSize;
+                scaledHeight = canvasSize / imgAspectRatio;
+                offsetX = 0;
+                offsetY = (canvasSize - scaledHeight) / 2;
+            } else {
+                scaledHeight = canvasSize;
+                scaledWidth = canvasSize * imgAspectRatio;
+                offsetY = 0;
+                offsetX = (canvasSize - scaledWidth) / 2;
+            }
+
+            // Draw the image onto the canvas
+            ctx.drawImage(img1, offsetX, offsetY, scaledWidth, scaledHeight);
+
+            // Draw the predefined image
             drawPredefinedImage(ctx, canvasSize);
 
             // Append the canvas to the preview section
             preview.appendChild(canvas);
-
             document.getElementById('downloadButton').style.display = 'block';
         };
     } else {
-        // If no image, just draw the predefined image
+        // If no image is selected, just draw the predefined image
         drawPredefinedImage(ctx, canvasSize);
         preview.appendChild(canvas);
         document.getElementById('downloadButton').style.display = 'block';
@@ -248,26 +262,25 @@ function drawPredefinedImage(ctx, canvasSize) {
         const imgHeight = (predefinedImg.height / predefinedImg.width) * imgWidth; // Maintain aspect ratio
 
         // Draw the predefined image in the bottom right corner
-        ctx.drawImage(predefinedImg, (canvasSize * 0.5) - imgWidth, (canvasSize * 0.5) - imgHeight, imgWidth, imgHeight);
+        ctx.drawImage(predefinedImg, (canvasSize - imgWidth), (canvasSize - imgHeight), imgWidth, imgHeight);
     };
 }
 
-  function colorSet() {
+function colorSet() {
     const colorInput = document.getElementById('color');
-
     colorInput.style.backgroundColor = colorInput.value;
-  }
+}
 
-  function downloadImage() {
+function downloadImage() {
     html2canvas(document.getElementById('preview')).then(canvas => {
-      const link = document.createElement('a');
-      link.download = 'ye.png';
-      link.href = canvas.toDataURL();
-      link.click();
+        const link = document.createElement('a');
+        link.download = 'ye.png';
+        link.href = canvas.toDataURL();
+        link.click();
     });
-  }
+}
 
-  document.getElementById('color').addEventListener('input', colorSet);
+document.getElementById('color').addEventListener('input', colorSet);
 </script>
 </body>
 </html>
