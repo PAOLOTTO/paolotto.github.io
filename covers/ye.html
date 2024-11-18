@@ -215,7 +215,6 @@
 
     // Load the pixelated image if selected
     const image1 = document.getElementById('image1').files[0];
-    if (image1) {
         const img1 = new Image();
         img1.src = URL.createObjectURL(image1);
 
@@ -244,21 +243,11 @@
 
             // Draw the pixelated image on the main canvas
             ctx.drawImage(tempCanvas, 0, 0, scaledWidth, scaledHeight, offsetX, offsetY, finalWidth, finalHeight);
-
-            // Once pixelated image is drawn, draw the predefined image
-            drawPredefinedImage(ctx, canvasSize);
-
-            // Append the canvas to the preview section
-            preview.appendChild(canvas);
-
-            document.getElementById('downloadButton').style.display = 'block';
         };
-    } else {
-        // If no pixelated image, just draw the predefined image
+  
         drawPredefinedImage(ctx, canvasSize);
         preview.appendChild(canvas);
         document.getElementById('downloadButton').style.display = 'block';
-    }
 }
 
 // Function to draw the predefined image in the bottom right corner
