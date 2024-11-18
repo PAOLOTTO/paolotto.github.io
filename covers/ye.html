@@ -175,7 +175,7 @@
       <!-- Grouping inputs two by two -->
       <div class="input-group">
         <div class="form-item">
-          <label for="color">Border Color:</label>
+          <label for="color">Text Color:</label>
           <input type="color" id="color" name="color" value="#d99441">
         </div>
         
@@ -213,10 +213,6 @@
     canvas.width = canvasSize;
     canvas.height = canvasSize;
 
-    // Draw the background (square border)
-    ctx.fillStyle = borderColor;
-    ctx.fillRect(canvasSize * 0.275, canvasSize * 0.275, canvasSize * 0.45, canvasSize * 0.45); // Center the square
-
     // Load the pixelated image if selected
     const image1 = document.getElementById('image1').files[0];
     if (image1) {
@@ -225,8 +221,8 @@
 
         img1.onload = function () {
             // Calculate scaled size based on pixelation rate
-            const scaledWidth = Math.floor(canvasSize * 0.45 / pixelationRate);
-            const scaledHeight = Math.floor(canvasSize * 0.45 / pixelationRate);
+            const scaledWidth = Math.floor(canvasSize / pixelationRate);
+            const scaledHeight = Math.floor(canvasSize / pixelationRate);
 
             // Create a temporary canvas to apply pixelation
             const tempCanvas = document.createElement('canvas');
@@ -239,8 +235,8 @@
             ctx.imageSmoothingEnabled = false;
 
             // Define the final size for the pixelated image (slightly smaller than the square)
-            const finalWidth = canvasSize * 0.45 * 0.9; // 90% of the square size
-            const finalHeight = canvasSize * 0.45 * 0.9;
+            const finalWidth = canvasSize
+            const finalHeight = canvasSize
 
             // Center the pixelated image within the square
             const offsetX = (canvasSize * 0.45 - finalWidth) / 2 + (canvasSize * 0.275);
